@@ -3,7 +3,7 @@ services:
     name: earthprint-web
     env: node
     plan: free
-    buildCommand: npm install && npx turbo run build --filter=@earthprint/web...
+    buildCommand: npm install --include=dev && npx turbo run build --filter=@earthprint/web...
     startCommand: npm run start --workspace=@earthprint/web
     envVars:
       - key: NODE_VERSION
