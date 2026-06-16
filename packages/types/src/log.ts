@@ -62,7 +62,11 @@ export type FoodType =
   | 'oils'
   | 'sugar'
   | 'processed-food'
-  | 'restaurant-meal';
+  | 'restaurant-meal'
+  | 'coffee'
+  | 'chocolate'
+  | 'oat-milk'
+  | 'almond-milk';
 
 /** Food log entry fields */
 export interface FoodLogData {

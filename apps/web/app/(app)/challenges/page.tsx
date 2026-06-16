@@ -134,7 +134,7 @@ export default function ChallengesPage() {
       }
       case 'challenge-002': { // Plant-Based Week (target: 21 meals)
         const plantMeals = logs.filter(
-          (l) => l.category === 'food' && ['vegetables', 'fruit', 'legumes', 'nuts', 'tofu', 'oat-milk', 'almond-milk'].includes(l.data?.foodType)
+          (l) => l.category === 'food' && ['vegetables', 'fruits', 'legumes', 'nuts', 'tofu', 'oat-milk', 'almond-milk'].includes(l.data?.foodType)
         );
         return plantMeals.length;
       }
@@ -194,7 +194,7 @@ export default function ChallengesPage() {
         logs.forEach((l) => {
           if (l.category === 'travel' && ['walking', 'cycling', 'bus', 'train-local', 'tram'].includes(l.data?.mode)) {
             saved += 5.0; // 5kg saved vs driving
-          } else if (l.category === 'food' && ['vegetables', 'fruit', 'legumes', 'nuts', 'tofu', 'oat-milk', 'almond-milk'].includes(l.data?.foodType)) {
+          } else if (l.category === 'food' && ['vegetables', 'fruits', 'legumes', 'nuts', 'tofu', 'oat-milk', 'almond-milk'].includes(l.data?.foodType)) {
             saved += 1.5; // 1.5kg saved vs beef
           } else if (l.category === 'shopping' && (l.data?.isSecondHand === true || l.data?.category === 'clothing-secondhand')) {
             saved += 10.0; // 10kg saved vs new clothes

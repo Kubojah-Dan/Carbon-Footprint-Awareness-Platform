@@ -170,6 +170,38 @@
       "dataYear": 2018
     },
     {
+      "foodType": "coffee",
+      "label": "Coffee (dark roast avg)",
+      "kgCo2ePerKg": 28.5,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "chocolate",
+      "label": "Chocolate",
+      "kgCo2ePerKg": 19.0,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "oat-milk",
+      "label": "Oat milk",
+      "kgCo2ePerKg": 0.9,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "almond-milk",
+      "label": "Almond milk",
+      "kgCo2ePerKg": 0.7,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
       "foodType": "processed-food",
       "label": "Processed / packaged food (average)",
       "kgCo2ePerKg": 5.0,
