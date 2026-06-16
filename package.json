@@ -16,7 +16,7 @@
     "seed": "tsx scripts/seed-firestore.ts",
     "import-factors": "tsx scripts/import-emission-factors.ts",
     "validate-factors": "tsx scripts/validate-factors.ts",
-    "prepare": "husky"
+    "prepare": "node -e \"if (!process.env.CI && process.env.NODE_ENV !== 'production') { try { require('child_process').execSync('husky', {stdio: 'inherit'}) } catch(e){} }\""
   },
   "devDependencies": {
     "@google-cloud/bigquery": "^8.3.1",
