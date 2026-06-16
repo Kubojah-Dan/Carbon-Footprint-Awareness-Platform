@@ -1,0 +1,84 @@
+{
+  "_meta": {
+    "title": "EarthPrint Grid Electricity Emission Factors",
+    "primarySource": "IEA World Energy Statistics & Balances 2022",
+    "sourceUrl": "https://www.iea.org/data-and-statistics/data-product/world-energy-statistics",
+    "secondarySource": "Electricity Maps — for real-time data (API key required)",
+    "electricityMapsUrl": "https://www.electricitymap.org/zone/",
+    "unit": "kg CO2e per kWh of electricity consumed",
+    "gwpBasis": "IPCC AR6 100-year GWP",
+    "globalAverage": 0.49,
+    "updatedAt": "2023-12-01",
+    "notes": "These are annual average grid intensity factors. For real-time marginal intensity, use Electricity Maps API. For users whose country is not listed, use globalAverage (0.49 kg CO2e/kWh). Factors decline each year as grids decarbonize — update annually."
+  },
+  "factors": [
+    { "region": "GB", "countryName": "United Kingdom", "kgCo2ePerKwh": 0.2120, "dataSource": "IEA 2022 / Electricity Maps", "dataYear": 2022 },
+    { "region": "US", "countryName": "United States (national avg)", "kgCo2ePerKwh": 0.3860, "dataSource": "EPA eGRID 2022 national average", "dataYear": 2022 },
+    { "region": "US-CAL-CISO", "countryName": "US — California (CAISO)", "kgCo2ePerKwh": 0.2100, "dataSource": "EPA eGRID 2022 CAMX region", "dataYear": 2022 },
+    { "region": "US-MIDA-PJM", "countryName": "US — Mid-Atlantic (PJM)", "kgCo2ePerKwh": 0.3640, "dataSource": "EPA eGRID 2022 RFCE+RFCM", "dataYear": 2022 },
+    { "region": "US-TEX-ERCO", "countryName": "US — Texas (ERCOT)", "kgCo2ePerKwh": 0.3970, "dataSource": "EPA eGRID 2022 ERCT region", "dataYear": 2022 },
+    { "region": "DE", "countryName": "Germany", "kgCo2ePerKwh": 0.3850, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "FR", "countryName": "France", "kgCo2ePerKwh": 0.0510, "dataSource": "IEA 2022 — low due to nuclear baseload", "dataYear": 2022 },
+    { "region": "ES", "countryName": "Spain", "kgCo2ePerKwh": 0.1770, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "IT", "countryName": "Italy", "kgCo2ePerKwh": 0.2880, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "NL", "countryName": "Netherlands", "kgCo2ePerKwh": 0.2960, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "PL", "countryName": "Poland", "kgCo2ePerKwh": 0.6990, "dataSource": "IEA 2022 — coal-heavy grid", "dataYear": 2022 },
+    { "region": "SE", "countryName": "Sweden", "kgCo2ePerKwh": 0.0140, "dataSource": "IEA 2022 — mostly hydro + nuclear", "dataYear": 2022 },
+    { "region": "NO", "countryName": "Norway", "kgCo2ePerKwh": 0.0240, "dataSource": "IEA 2022 — mostly hydro", "dataYear": 2022 },
+    { "region": "DK", "countryName": "Denmark", "kgCo2ePerKwh": 0.1540, "dataSource": "IEA 2022 — high wind penetration", "dataYear": 2022 },
+    { "region": "AU", "countryName": "Australia (NEM average)", "kgCo2ePerKwh": 0.5180, "dataSource": "AEMO 2022", "dataYear": 2022 },
+    { "region": "CA", "countryName": "Canada (national avg)", "kgCo2ePerKwh": 0.1300, "dataSource": "Canada NEB 2022", "dataYear": 2022 },
+    { "region": "IN", "countryName": "India", "kgCo2ePerKwh": 0.7080, "dataSource": "IEA 2022 — coal-dominant", "dataYear": 2022 },
+    { "region": "CN", "countryName": "China", "kgCo2ePerKwh": 0.5810, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "JP", "countryName": "Japan", "kgCo2ePerKwh": 0.4640, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "KR", "countryName": "South Korea", "kgCo2ePerKwh": 0.4050, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "BR", "countryName": "Brazil", "kgCo2ePerKwh": 0.0970, "dataSource": "IEA 2022 — hydro-dominant", "dataYear": 2022 },
+    { "region": "ZA", "countryName": "South Africa", "kgCo2ePerKwh": 0.9280, "dataSource": "IEA 2022 — coal-heavy", "dataYear": 2022 },
+    { "region": "NG", "countryName": "Nigeria", "kgCo2ePerKwh": 0.4560, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "EG", "countryName": "Egypt", "kgCo2ePerKwh": 0.4550, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "MX", "countryName": "Mexico", "kgCo2ePerKwh": 0.4550, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "AR", "countryName": "Argentina", "kgCo2ePerKwh": 0.3110, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "NZ", "countryName": "New Zealand", "kgCo2ePerKwh": 0.1300, "dataSource": "IEA 2022 — mostly hydro + geothermal", "dataYear": 2022 },
+    { "region": "SG", "countryName": "Singapore", "kgCo2ePerKwh": 0.4080, "dataSource": "EMA Singapore 2022", "dataYear": 2022 },
+    { "region": "PT", "countryName": "Portugal", "kgCo2ePerKwh": 0.1890, "dataSource": "IEA 2022 — high wind + solar", "dataYear": 2022 },
+    { "region": "IE", "countryName": "Ireland", "kgCo2ePerKwh": 0.2950, "dataSource": "IEA 2022", "dataYear": 2022 },
+    { "region": "GLOBAL", "countryName": "Global average (fallback)", "kgCo2ePerKwh": 0.4900, "dataSource": "IEA World Energy Outlook 2022 — used when country not found", "dataYear": 2022 }
+  ],
+  "fuelFactors": [
+    {
+      "fuelType": "natural-gas",
+      "label": "Natural gas (mains, UK)",
+      "kgCo2ePerKwh": 0.2026,
+      "kgCo2ePerUnit": 2.03,
+      "unit": "m3",
+      "dataSource": "DEFRA 2023, Table: Fuels — gaseous fuels",
+      "dataYear": 2023,
+      "notes": "Includes methane leakage upstream. 1 m3 natural gas ≈ 10.55 kWh gross calorific value."
+    },
+    {
+      "fuelType": "heating-oil",
+      "label": "Heating oil (kerosene/fuel oil)",
+      "kgCo2ePerKwh": 0.2968,
+      "kgCo2ePerUnit": 2.96,
+      "unit": "litre",
+      "dataSource": "DEFRA 2023, Table: Fuels — liquid fuels",
+      "dataYear": 2023
+    },
+    {
+      "fuelType": "lpg",
+      "label": "LPG (liquefied petroleum gas)",
+      "kgCo2ePerKwh": 0.2144,
+      "kgCo2ePerUnit": 1.51,
+      "unit": "litre",
+      "dataSource": "DEFRA 2023",
+      "dataYear": 2023
+    },
+    {
+      "fuelType": "biomass",
+      "label": "Wood pellets / biomass boiler",
+      "kgCo2ePerKwh": 0.0390,
+      "dataSource": "DEFRA 2023 — biogenic CO2 excluded per IPCC guidance; includes upstream",
+      "dataYear": 2023
+    }
+  ]
+}

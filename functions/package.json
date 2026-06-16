@@ -1,0 +1,30 @@
+{
+  "name": "functions",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@earthprint/emission-engine": "*",
+    "@earthprint/types": "*",
+    "@google/generative-ai": "^0.21.0",
+    "@google-cloud/bigquery": "^7.9.0",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}

@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "logActivity": "Log Activity",
+    "community": "Community",
+    "marketplace": "Marketplace",
+    "challenges": "Challenges",
+    "insights": "Insights",
+    "workplace": "Workplace",
+    "logout": "Log Out"
+  },
+  "dashboard": {
+    "greeting": "Hey {name} 👋",
+    "thisMonth": "This Month",
+    "points": "Green Points",
+    "streak": "Logging Streak",
+    "streakHelp": "Log today to start your streak!",
+    "monthlyBudget": "Monthly budget used"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "submit": "Submit",
+    "success": "Success",
+    "error": "Error"
+  }
+}

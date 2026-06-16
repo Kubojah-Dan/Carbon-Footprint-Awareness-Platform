@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "dashboard": "Painel",
+    "logActivity": "Registrar Atividade",
+    "community": "Comunidade",
+    "marketplace": "Mercado",
+    "challenges": "Desafios",
+    "insights": "Sugestões AI",
+    "workplace": "Trabalho",
+    "logout": "Sair"
+  },
+  "dashboard": {
+    "greeting": "Olá {name} 👋",
+    "thisMonth": "Este Mês",
+    "points": "Pontos Verdes",
+    "streak": "Sequência",
+    "streakHelp": "Registre hoje para iniciar sua sequência!",
+    "monthlyBudget": "Orçamento mensal carbono utilizado"
+  },
+  "common": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "loading": "Carregando...",
+    "submit": "Enviar",
+    "success": "Sucesso",
+    "error": "Erro"
+  }
+}

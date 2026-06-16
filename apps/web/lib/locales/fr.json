@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "dashboard": "Tableau de Bord",
+    "logActivity": "Enregistrer Activité",
+    "community": "Communauté",
+    "marketplace": "Marché",
+    "challenges": "Défis",
+    "insights": "Analyses AI",
+    "workplace": "Espace Travail",
+    "logout": "Se Déconnecter"
+  },
+  "dashboard": {
+    "greeting": "Salut {name} 👋",
+    "thisMonth": "Ce Mois-ci",
+    "points": "Points Verts",
+    "streak": "Série de Visites",
+    "streakHelp": "Enregistrez aujourd'hui pour commencer votre série !",
+    "monthlyBudget": "Budget carbone mensuel utilisé"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "loading": "Chargement...",
+    "submit": "Soumettre",
+    "success": "Succès",
+    "error": "Erreur"
+  }
+}

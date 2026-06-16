@@ -1,0 +1,179 @@
+{
+  "_meta": {
+    "title": "EarthPrint Transport Emission Factors",
+    "primarySource": "DEFRA 2023 GHG Conversion Factors for Company Reporting",
+    "sourceUrl": "https://www.gov.uk/government/collections/government-conversion-factors-for-company-reporting",
+    "secondarySource": "ICCT (International Council on Clean Transportation)",
+    "icctUrl": "https://theicct.org/publications/",
+    "unit": "kg CO2e per passenger-km",
+    "gwpBasis": "IPCC AR6 100-year GWP",
+    "updatedAt": "2024-01-01",
+    "notes": "Flight factors include DEFRA's recommended Radiative Forcing Index (RFI) multiplier of 1.9 to account for non-CO2 warming effects at altitude. Some researchers use higher values (2.7-4x); see docs/emission-methodology.md."
+  },
+  "factors": [
+    {
+      "mode": "car-petrol",
+      "label": "Petrol car (average occupancy 1.6)",
+      "kgCo2ePerPassengerKm": 0.1704,
+      "dataSource": "DEFRA 2023, Table: Business travel — land",
+      "dataYear": 2023,
+      "notes": "Average petrol car, average UK occupancy"
+    },
+    {
+      "mode": "car-diesel",
+      "label": "Diesel car (average occupancy 1.6)",
+      "kgCo2ePerPassengerKm": 0.1683,
+      "dataSource": "DEFRA 2023, Table: Business travel — land",
+      "dataYear": 2023
+    },
+    {
+      "mode": "car-hybrid",
+      "label": "Hybrid car",
+      "kgCo2ePerPassengerKm": 0.1064,
+      "dataSource": "DEFRA 2023, Table: Business travel — land",
+      "dataYear": 2023
+    },
+    {
+      "mode": "car-phev",
+      "label": "Plug-in hybrid car (weighted avg)",
+      "kgCo2ePerPassengerKm": 0.0694,
+      "dataSource": "DEFRA 2023, Table: Business travel — land",
+      "dataYear": 2023,
+      "notes": "PHEV factor assumes ~40% electric, 60% petrol driving"
+    },
+    {
+      "mode": "car-electric",
+      "label": "Battery electric car (UK grid average)",
+      "kgCo2ePerPassengerKm": 0.0442,
+      "dataSource": "DEFRA 2023, Table: Business travel — land",
+      "dataYear": 2023,
+      "notes": "Grid-dependent; uses UK average grid intensity. Override with grid-factors.json for user's country."
+    },
+    {
+      "mode": "motorcycle",
+      "label": "Motorcycle / moped",
+      "kgCo2ePerPassengerKm": 0.1138,
+      "dataSource": "DEFRA 2023",
+      "dataYear": 2023
+    },
+    {
+      "mode": "bus",
+      "label": "Local bus (average occupancy)",
+      "kgCo2ePerPassengerKm": 0.1029,
+      "dataSource": "DEFRA 2023, Table: Business travel — land",
+      "dataYear": 2023
+    },
+    {
+      "mode": "coach",
+      "label": "National coach",
+      "kgCo2ePerPassengerKm": 0.0275,
+      "dataSource": "DEFRA 2023",
+      "dataYear": 2023
+    },
+    {
+      "mode": "train-local",
+      "label": "Local/commuter rail",
+      "kgCo2ePerPassengerKm": 0.0362,
+      "dataSource": "DEFRA 2023, Table: Business travel — rail",
+      "dataYear": 2023,
+      "notes": "UK national rail average"
+    },
+    {
+      "mode": "train-intercity",
+      "label": "Intercity / high-speed rail",
+      "kgCo2ePerPassengerKm": 0.0410,
+      "dataSource": "DEFRA 2023",
+      "dataYear": 2023
+    },
+    {
+      "mode": "tram",
+      "label": "Tram / light rail",
+      "kgCo2ePerPassengerKm": 0.0290,
+      "dataSource": "DEFRA 2023",
+      "dataYear": 2023
+    },
+    {
+      "mode": "subway",
+      "label": "Subway / metro / underground",
+      "kgCo2ePerPassengerKm": 0.0272,
+      "dataSource": "DEFRA 2023",
+      "dataYear": 2023
+    },
+    {
+      "mode": "ferry",
+      "label": "Ferry (foot passenger)",
+      "kgCo2ePerPassengerKm": 0.1138,
+      "dataSource": "DEFRA 2023",
+      "dataYear": 2023
+    },
+    {
+      "mode": "flight-domestic",
+      "label": "Domestic flight (< 500 km) — economy",
+      "kgCo2ePerPassengerKm": 0.2551,
+      "flightClass": "economy",
+      "radiativeForcingMultiplier": 1.9,
+      "dataSource": "DEFRA 2023, Table: Business travel — air. RFI multiplier per IPCC recommendation.",
+      "dataYear": 2023,
+      "notes": "Factor already includes RFI 1.9 uplift for high-altitude effects"
+    },
+    {
+      "mode": "flight-short-haul",
+      "label": "Short-haul flight (500–3700 km) — economy",
+      "kgCo2ePerPassengerKm": 0.1532,
+      "flightClass": "economy",
+      "radiativeForcingMultiplier": 1.9,
+      "dataSource": "DEFRA 2023, Table: Business travel — air",
+      "dataYear": 2023,
+      "notes": "Factor already includes RFI 1.9 uplift"
+    },
+    {
+      "mode": "flight-long-haul",
+      "label": "Long-haul flight (> 3700 km) — economy",
+      "kgCo2ePerPassengerKm": 0.1480,
+      "flightClass": "economy",
+      "radiativeForcingMultiplier": 1.9,
+      "dataSource": "DEFRA 2023, Table: Business travel — air",
+      "dataYear": 2023,
+      "notes": "Factor already includes RFI 1.9 uplift"
+    },
+    {
+      "mode": "flight-long-haul",
+      "label": "Long-haul flight — business class",
+      "kgCo2ePerPassengerKm": 0.4290,
+      "flightClass": "business",
+      "radiativeForcingMultiplier": 1.9,
+      "dataSource": "DEFRA 2023 — business class factor = 2.9x economy (seat area multiplier)",
+      "dataYear": 2023
+    },
+    {
+      "mode": "flight-long-haul",
+      "label": "Long-haul flight — first class",
+      "kgCo2ePerPassengerKm": 0.5920,
+      "flightClass": "first",
+      "radiativeForcingMultiplier": 1.9,
+      "dataSource": "DEFRA 2023 — first class factor = 4x economy (seat area multiplier)",
+      "dataYear": 2023
+    },
+    {
+      "mode": "cycling",
+      "label": "Cycling",
+      "kgCo2ePerPassengerKm": 0.0,
+      "dataSource": "Zero direct emissions. Manufacturing emissions ~0.005 kg CO2e/km — excluded per DEFRA methodology.",
+      "dataYear": 2023
+    },
+    {
+      "mode": "e-bike",
+      "label": "E-bike",
+      "kgCo2ePerPassengerKm": 0.0025,
+      "dataSource": "Estimated from electricity consumption (~10 Wh/km) × UK grid factor",
+      "dataYear": 2023
+    },
+    {
+      "mode": "walking",
+      "label": "Walking",
+      "kgCo2ePerPassengerKm": 0.0,
+      "dataSource": "Zero direct emissions",
+      "dataYear": 2023
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "_meta": {
+    "title": "EarthPrint Food Lifecycle Emission Factors",
+    "primarySource": "Poore & Nemecek 2018 — 'Reducing food's environmental impacts through producers and consumers'",
+    "sourceUrl": "https://ora.ox.ac.uk/objects/uuid:b0b53649-5e93-4415-bf07-6b0b1227172f",
+    "journal": "Science, Vol. 360, Issue 6392, pp. 987-992",
+    "doi": "10.1126/science.aaq0216",
+    "unit": "kg CO2e per kg of food (farm-to-retail lifecycle)",
+    "gwpBasis": "IPCC AR5 100-year GWP (consistent with Poore & Nemecek data)",
+    "updatedAt": "2024-01-01",
+    "notes": "Factors represent median values across production systems. Land-use change emissions included. Values may differ by region and production method."
+  },
+  "factors": [
+    {
+      "foodType": "beef",
+      "label": "Beef (average — including dairy herd)",
+      "kgCo2ePerKg": 60.0,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018, Extended Data Figure 1",
+      "dataYear": 2018,
+      "notes": "Median across beef production systems globally. Includes methane (CH4) from enteric fermentation and nitrous oxide (N2O) from manure."
+    },
+    {
+      "foodType": "lamb",
+      "label": "Lamb & mutton",
+      "kgCo2ePerKg": 24.0,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "pork",
+      "label": "Pork",
+      "kgCo2ePerKg": 7.6,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "chicken",
+      "label": "Poultry (chicken, turkey)",
+      "kgCo2ePerKg": 6.9,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "fish-farmed",
+      "label": "Fish — farmed (salmon, trout, tilapia avg)",
+      "kgCo2ePerKg": 13.6,
+      "includesLandUse": false,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018,
+      "notes": "High variance by species and farming method (1.9–48.7 kg CO2e/kg)"
+    },
+    {
+      "foodType": "fish-wild",
+      "label": "Fish — wild-caught",
+      "kgCo2ePerKg": 3.0,
+      "includesLandUse": false,
+      "dataSource": "Poore & Nemecek 2018 — boat fuel emissions",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "seafood",
+      "label": "Shellfish / crustaceans (prawns, shrimp avg)",
+      "kgCo2ePerKg": 26.0,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018 — tropical shrimp farming",
+      "dataYear": 2018,
+      "notes": "High variance; farmed tropical shrimp worst-case. Locally caught shellfish ~2 kg CO2e/kg."
+    },
+    {
+      "foodType": "eggs",
+      "label": "Eggs",
+      "kgCo2ePerKg": 4.8,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "dairy-milk",
+      "label": "Dairy milk (cow's milk)",
+      "kgCo2ePerKg": 3.2,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018,
+      "notes": "Per kg of milk. Per litre: ~3.2 kg CO2e (density ≈ 1 kg/L)"
+    },
+    {
+      "foodType": "dairy-cheese",
+      "label": "Cheese",
+      "kgCo2ePerKg": 21.0,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018 — ~6 L milk per kg cheese",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "dairy-butter",
+      "label": "Butter",
+      "kgCo2ePerKg": 11.5,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "legumes",
+      "label": "Pulses / legumes (lentils, beans, peas)",
+      "kgCo2ePerKg": 0.9,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "tofu",
+      "label": "Tofu / soy products",
+      "kgCo2ePerKg": 3.0,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "vegetables",
+      "label": "Vegetables (average)",
+      "kgCo2ePerKg": 2.0,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018 — weighted average across vegetables",
+      "dataYear": 2018,
+      "notes": "Range: 0.4 kg (onions) to 14 kg (asparagus out of season via air freight)"
+    },
+    {
+      "foodType": "fruits",
+      "label": "Fruit (average — local and seasonal)",
+      "kgCo2ePerKg": 1.1,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "grains",
+      "label": "Grains / cereals (wheat, rice avg)",
+      "kgCo2ePerKg": 2.7,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018. Rice: 4.0 kg CO2e/kg (methane from flooded paddies); wheat: 1.4 kg CO2e/kg.",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "nuts",
+      "label": "Nuts (average)",
+      "kgCo2ePerKg": 2.5,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "oils",
+      "label": "Vegetable oils (palm, sunflower, rapeseed avg)",
+      "kgCo2ePerKg": 3.8,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018,
+      "notes": "Palm oil can be significantly higher due to deforestation (8–28 kg CO2e/kg)"
+    },
+    {
+      "foodType": "sugar",
+      "label": "Sugar (cane and beet average)",
+      "kgCo2ePerKg": 1.7,
+      "includesLandUse": true,
+      "dataSource": "Poore & Nemecek 2018",
+      "dataYear": 2018
+    },
+    {
+      "foodType": "processed-food",
+      "label": "Processed / packaged food (average)",
+      "kgCo2ePerKg": 5.0,
+      "includesLandUse": false,
+      "dataSource": "DEFRA 2023 spend-based food manufacturing factor (approximate)",
+      "dataYear": 2023,
+      "notes": "Conservative average for processed food category when ingredient details unknown"
+    },
+    {
+      "foodType": "restaurant-meal",
+      "label": "Restaurant / takeaway meal (average)",
+      "kgCo2ePerKg": 4.5,
+      "includesLandUse": false,
+      "dataSource": "Estimated from average UK meal composition + DEFRA food service factors",
+      "dataYear": 2023,
+      "notes": "Highly variable by meal type. Used as fallback when specific ingredients unknown."
+    }
+  ]
+}

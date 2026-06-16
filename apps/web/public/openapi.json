@@ -1,0 +1,196 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "EarthPrint Developer API",
+    "description": "REST API allowing developers and third-party tools to fetch user metrics, estimate activity carbon footprints, and log eco-actions.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development server"
+    },
+    {
+      "url": "https://api.earthprint.org",
+      "description": "Production server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/api/v1/public/calculate": {
+      "post": {
+        "summary": "Calculate Carbon Emissions",
+        "description": "Estimate carbon footprint emissions (kg CO2e) for travel, food, energy, or shopping parameters.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["category", "data"],
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": ["travel", "food", "energy", "shopping"]
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Payload parameters matching category details"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Emissions calculated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "category": { "type": "string" },
+                    "kgCo2e": { "type": "number" },
+                    "details": { "type": "object" }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid parameters or formatting"
+          }
+        }
+      }
+    },
+    "/api/v1/public/logs": {
+      "get": {
+        "summary": "List Recent Activity Logs",
+        "description": "Retrieve the developer account's 30 most recent eco-action log entries.",
+        "responses": {
+          "200": {
+            "description": "Logs retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "logs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Log a New Eco-Action Activity",
+        "description": "Calculate emissions and save a verified log entry to the user profile, awarding points and updating stats.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["category", "data", "activityDate"],
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "enum": ["travel", "food", "energy", "shopping"]
+                  },
+                  "data": {
+                    "type": "object"
+                  },
+                  "activityDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2026-06-11"
+                  },
+                  "notes": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "source": {
+                    "type": "string",
+                    "default": "manual"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Eco-action logged successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "logEntry": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/profile": {
+      "get": {
+        "summary": "Get User Profile Metrics",
+        "description": "Retrieve points, streak count, terraScore, and onboarding goals for the authenticated key.",
+        "responses": {
+          "200": {
+            "description": "Profile metrics retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "profile": {
+                      "type": "object",
+                      "properties": {
+                        "uid": { "type": "string" },
+                        "displayName": { "type": "string" },
+                        "points": { "type": "integer" },
+                        "streakDays": { "type": "integer" },
+                        "terraScore": { "type": "integer" },
+                        "activeBiome": { "type": "string" },
+                        "preferredUnits": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

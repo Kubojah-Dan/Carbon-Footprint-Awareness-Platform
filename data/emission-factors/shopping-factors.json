@@ -1,0 +1,133 @@
+{
+  "_meta": {
+    "title": "EarthPrint Shopping Spend-Based Emission Factors",
+    "primarySource": "DEFRA 2023 GHG Conversion Factors — Scope 3 Spend-Based Factors",
+    "sourceUrl": "https://www.gov.uk/government/collections/government-conversion-factors-for-company-reporting",
+    "sheet": "Scope 3 spend-based factors by expenditure category",
+    "unit": "kg CO2e per £1 GBP spent",
+    "gwpBasis": "IPCC AR6 100-year GWP",
+    "currencyBase": "GBP",
+    "currencyYear": 2022,
+    "updatedAt": "2024-01-01",
+    "notes": "Spend-based factors are less precise than activity-based factors but useful when specific product data is unavailable (e.g. bank transactions). For USD, EUR, INR conversions: use purchasing power parity (PPP) adjustment or apply as approximate. Second-hand multiplier represents remaining transport/transaction emissions only."
+  },
+  "factors": [
+    {
+      "category": "clothing-fast-fashion",
+      "label": "Clothing — fast fashion (new)",
+      "kgCo2ePerGbp": 0.50,
+      "secondHandMultiplier": 0.05,
+      "dataSource": "DEFRA 2023 — Clothing & textiles category (production-intensive)",
+      "dataYear": 2023,
+      "notes": "Includes manufacturing, dyeing, transport. Fast fashion has high turnover → higher per-spend factor."
+    },
+    {
+      "category": "clothing-sustainable",
+      "label": "Clothing — sustainable / ethical brands (new)",
+      "kgCo2ePerGbp": 0.35,
+      "secondHandMultiplier": 0.05,
+      "dataSource": "DEFRA 2023 — Clothing (adjusted for lower-intensity production methods)",
+      "dataYear": 2023,
+      "notes": "Estimated 30% reduction vs. fast fashion for certified sustainable production"
+    },
+    {
+      "category": "clothing-secondhand",
+      "label": "Clothing — second-hand / vintage",
+      "kgCo2ePerGbp": 0.03,
+      "secondHandMultiplier": 1.0,
+      "dataSource": "Transport + platform emissions only; production emissions allocated to original buyer per ISO 14044",
+      "dataYear": 2023
+    },
+    {
+      "category": "electronics-large",
+      "label": "Electronics — large (TV, laptop, washing machine)",
+      "kgCo2ePerGbp": 0.42,
+      "secondHandMultiplier": 0.04,
+      "dataSource": "DEFRA 2023 — Electrical equipment and machinery",
+      "dataYear": 2023,
+      "notes": "Manufacturing is carbon-intensive; high per-£ factor because devices have embedded energy"
+    },
+    {
+      "category": "electronics-small",
+      "label": "Electronics — small (phone accessories, gadgets)",
+      "kgCo2ePerGbp": 0.38,
+      "secondHandMultiplier": 0.04,
+      "dataSource": "DEFRA 2023 — Electrical equipment",
+      "dataYear": 2023
+    },
+    {
+      "category": "furniture",
+      "label": "Furniture & home furnishings",
+      "kgCo2ePerGbp": 0.28,
+      "secondHandMultiplier": 0.04,
+      "dataSource": "DEFRA 2023 — Furniture & household goods",
+      "dataYear": 2023
+    },
+    {
+      "category": "appliances",
+      "label": "Household appliances (white goods, small appliances)",
+      "kgCo2ePerGbp": 0.35,
+      "secondHandMultiplier": 0.04,
+      "dataSource": "DEFRA 2023 — Household appliances",
+      "dataYear": 2023
+    },
+    {
+      "category": "books-stationery",
+      "label": "Books, stationery & paper",
+      "kgCo2ePerGbp": 0.18,
+      "secondHandMultiplier": 0.03,
+      "dataSource": "DEFRA 2023 — Paper & publishing",
+      "dataYear": 2023
+    },
+    {
+      "category": "toys-hobbies",
+      "label": "Toys, sports & hobbies",
+      "kgCo2ePerGbp": 0.25,
+      "secondHandMultiplier": 0.04,
+      "dataSource": "DEFRA 2023 — Recreational goods",
+      "dataYear": 2023
+    },
+    {
+      "category": "personal-care",
+      "label": "Personal care & cosmetics",
+      "kgCo2ePerGbp": 0.22,
+      "secondHandMultiplier": 0.05,
+      "dataSource": "DEFRA 2023 — Chemical products (household)",
+      "dataYear": 2023
+    },
+    {
+      "category": "cleaning-products",
+      "label": "Cleaning products & household chemicals",
+      "kgCo2ePerGbp": 0.20,
+      "secondHandMultiplier": 0.05,
+      "dataSource": "DEFRA 2023 — Chemical products (household)",
+      "dataYear": 2023
+    },
+    {
+      "category": "food-delivery",
+      "label": "Food delivery / takeaway",
+      "kgCo2ePerGbp": 0.45,
+      "secondHandMultiplier": 1.0,
+      "dataSource": "Estimated: DEFRA food service factor + delivery vehicle emissions",
+      "dataYear": 2023,
+      "notes": "Includes food production + packaging + delivery vehicle emissions"
+    },
+    {
+      "category": "online-delivery",
+      "label": "Online retail (general — avg all categories)",
+      "kgCo2ePerGbp": 0.32,
+      "secondHandMultiplier": 0.04,
+      "dataSource": "DEFRA 2023 — Retail trade weighted average",
+      "dataYear": 2023
+    },
+    {
+      "category": "services",
+      "label": "Services (subscriptions, entertainment, professional)",
+      "kgCo2ePerGbp": 0.08,
+      "secondHandMultiplier": 1.0,
+      "dataSource": "DEFRA 2023 — Business services",
+      "dataYear": 2023,
+      "notes": "Services have much lower physical goods emissions; mostly energy and commuting"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "logActivity": "गतिविधि दर्ज करें",
+    "community": "समुदाय",
+    "marketplace": "मार्केटप्लेस",
+    "challenges": "चुनौतियां",
+    "insights": "एआई सुझाव",
+    "workplace": "कार्यस्थल",
+    "logout": "लॉग आउट"
+  },
+  "dashboard": {
+    "greeting": "नमस्ते {name} 👋",
+    "thisMonth": "इस महीने",
+    "points": "ग्रीन पॉइंट्स",
+    "streak": "लगातार दिन",
+    "streakHelp": "अपनी लकीर शुरू करने के लिए आज ही लॉग करें!",
+    "monthlyBudget": "उपयोग किया गया मासिक बजट"
+  },
+  "common": {
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "loading": "लोड हो रहा है...",
+    "submit": "जमा करें",
+    "success": "सफलता",
+    "error": "त्रुटि"
+  }
+}

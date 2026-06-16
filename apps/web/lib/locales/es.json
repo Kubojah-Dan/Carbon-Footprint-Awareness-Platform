@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "dashboard": "Panel de Control",
+    "logActivity": "Registrar Actividad",
+    "community": "Comunidad",
+    "marketplace": "Mercado",
+    "challenges": "Desafíos",
+    "insights": "Recomendaciones AI",
+    "workplace": "Lugar de Trabajo",
+    "logout": "Cerrar Sesión"
+  },
+  "dashboard": {
+    "greeting": "Hola {name} 👋",
+    "thisMonth": "Este Mes",
+    "points": "Puntos Verdes",
+    "streak": "Racha de Registro",
+    "streakHelp": "¡Registra hoy para iniciar tu racha!",
+    "monthlyBudget": "Presupuesto mensual utilizado"
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "loading": "Cargando...",
+    "submit": "Enviar",
+    "success": "Éxito",
+    "error": "Error"
+  }
+}
