@@ -239,6 +239,60 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_maps_key
 2. **Second-Hand Goods**: Second-hand purchases are assumed to have 0 production emissions.
 3. **Grace Day Reset**: The weekly grace day resets every Sunday at 00:00:00 local time.
 
+## 11. Deployment to Render
+
+To deploy the **EarthPrint Web Application** on Render, follow these steps to ensure the Next.js Turborepo builds and runs successfully:
+
+### Step 1: Create a Web Service
+1. Log in to the [Render Dashboard](https://dashboard.render.com).
+2. Click **New +** and select **Web Service**.
+3. Connect your GitHub repository containing the EarthPrint codebase.
+
+### Step 2: Configure Service Properties
+Fill in the following details on the Web Service configuration page:
+
+* **Name**: `earthprint-web` (or your preferred name)
+* **Runtime**: `Node`
+* **Region**: Select a region close to your primary database/users.
+* **Branch**: `main` (or your deployment branch)
+* **Root Directory**: *Leave blank* (This is critical: do not set it to `apps/web` so that Render installs dependencies for the entire Turborepo workspace).
+
+### Step 3: Build & Start Commands
+Under the **Build & Start Settings**, enter:
+
+* **Build Command**: `npx turbo run build --filter=@earthprint/web...`
+  * *Note: The `...` tells Turborepo to build `@earthprint/web` and all local packages it depends on (such as `@earthprint/ui`, `@earthprint/types`, and `@earthprint/emission-engine`).*
+* **Start Command**: `npm run start --workspace=@earthprint/web`
+
+### Step 4: Configure Environment Variables
+Navigate to the **Environment** tab in Render and add the environment variables listed in the [Environment Variables](#8-environment-variables) section.
+
+> [!IMPORTANT]
+> **Build-Time vs. Runtime Variables**:
+> Next.js bundles variables prefixed with `NEXT_PUBLIC_` into the client-side code *during the build phase*. You must define all `NEXT_PUBLIC_` variables in the Render Dashboard **before** triggering the build.
+
+#### Key Environment Settings:
+1. **Node Version**:
+   * Add `NODE_VERSION` = `20` (Render defaults to older versions, but Node 20+ is required).
+2. **Firebase Admin Private Key**:
+   * Paste your private key directly. The application is configured to automatically parse newline strings (`\n`) and missing certificate headers.
+3. **Environment Mode**:
+   * Add `NODE_ENV` = `production`
+4. **App URL**:
+   * Set `NEXT_PUBLIC_APP_URL` = `https://<your-subdomain>.onrender.com` (using the live Render service URL once generated).
+
 ---
 
+## 12. License
 
+MIT License — see `LICENSE` for details.
+
+---
+
+<div align="center">
+
+**EarthPrint** · Built with 🌿 to solve a real problem
+
+*Making sustainable choices feel natural, rewarding, and impactful.*
+
+</div>
