@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useAuth } from '@/providers/AuthProvider';
 import { useLogs } from '@/hooks/useLogs';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
@@ -51,7 +51,7 @@ export default function CommunityPage() {
   }, [logs]);
 
   // Fetch Feed
-  const fetchFeed = async () => {
+  const fetchFeed = useCallback(async () => {
     if (!uid) return;
     try {
       setPostsLoading(true);
@@ -65,10 +65,10 @@ export default function CommunityPage() {
     } finally {
       setPostsLoading(false);
     }
-  };
+  }, [uid]);
 
   // Fetch Friends
-  const fetchFriends = async () => {
+  const fetchFriends = useCallback(async () => {
     if (!uid) return;
     try {
       setFriendsLoading(true);
@@ -83,10 +83,10 @@ export default function CommunityPage() {
     } finally {
       setFriendsLoading(false);
     }
-  };
+  }, [uid]);
 
   // Fetch Leaderboard
-  const fetchLeaderboard = async (type: 'global' | 'neighborhood' | 'friends') => {
+  const fetchLeaderboard = useCallback(async (type: 'global' | 'neighborhood' | 'friends') => {
     if (!uid) return;
     try {
       setLeaderboardLoading(true);
@@ -104,7 +104,7 @@ export default function CommunityPage() {
     } finally {
       setLeaderboardLoading(false);
     }
-  };
+  }, [uid]);
 
   useEffect(() => {
     if (uid) {
@@ -112,13 +112,13 @@ export default function CommunityPage() {
       fetchFriends();
       fetchLeaderboard(leaderboardType);
     }
-  }, [uid]);
+  }, [uid, leaderboardType, fetchFeed, fetchFriends, fetchLeaderboard]);
 
   useEffect(() => {
     if (uid) {
       fetchLeaderboard(leaderboardType);
     }
-  }, [leaderboardType, uid]);
+  }, [leaderboardType, uid, fetchLeaderboard]);
 
   // Create Post
   const handleCreatePost = async (e: React.FormEvent) => {

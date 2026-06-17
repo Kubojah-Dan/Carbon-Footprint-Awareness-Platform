@@ -9,6 +9,7 @@
     "./tokens": "./src/tokens.ts"
   },
   "scripts": {
+    "build": "tsc --noEmit",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

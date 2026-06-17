@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useAuth } from '@/providers/AuthProvider';
 import { useLogs } from '@/hooks/useLogs';
 import { useAIRecommendations } from '@/hooks/useAIRecommendations';
@@ -148,7 +148,7 @@ export default function InsightsPage() {
   }, [logs, isDemoData]);
 
   // Fetch Biophilic Coach Guidance
-  const fetchCoachNudge = async (biomeOverride?: typeof activeBiome) => {
+  const fetchCoachNudge = useCallback(async (biomeOverride?: typeof activeBiome) => {
     if (!uid) return;
     try {
       setCoachLoading(true);
@@ -169,7 +169,7 @@ export default function InsightsPage() {
     } finally {
       setCoachLoading(false);
     }
-  };
+  }, [uid, activeBiome]);
 
   useEffect(() => {
     if (uid) {
@@ -178,7 +178,7 @@ export default function InsightsPage() {
       }
       fetchCoachNudge(userProfile?.activeBiome as any);
     }
-  }, [uid, userProfile?.activeBiome]);
+  }, [uid, userProfile?.activeBiome, fetchCoachNudge]);
 
   // Switch user's active biome avatar in Firestore
   const handleSwitchBiome = async (biome: typeof activeBiome) => {

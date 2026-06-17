@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/providers/AuthProvider';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -22,7 +22,7 @@ export default function MarketplacePage() {
   const [revealedCode, setRevealedCode] = useState<string | null>(null);
   const [redeemError, setRedeemError] = useState<string | null>(null);
 
-  const fetchMarketplace = async () => {
+  const fetchMarketplace = useCallback(async () => {
     if (!uid) return;
     try {
       setLoading(true);
@@ -37,13 +37,13 @@ export default function MarketplacePage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [uid]);
 
   useEffect(() => {
     if (uid) {
       fetchMarketplace();
     }
-  }, [uid]);
+  }, [uid, fetchMarketplace]);
 
   const handleRedeemAction = async () => {
     if (!uid || !selectedAction) return;

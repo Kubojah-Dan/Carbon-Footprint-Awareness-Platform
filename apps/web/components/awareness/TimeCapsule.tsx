@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 
@@ -54,6 +54,17 @@ export function TimeCapsule() {
     return () => clearInterval(interval);
   }, []);
 
+  const stopRecording = useCallback(() => {
+    setIsRecording(false);
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      mediaRecorderRef.current.stop();
+    }
+    if (cameraStream) {
+      cameraStream.getTracks().forEach((track) => track.stop());
+      setCameraStream(null);
+    }
+  }, [cameraStream]);
+
   // Handle Recording Timer
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -69,7 +80,7 @@ export function TimeCapsule() {
       }, 1000);
     }
     return () => clearInterval(timer);
-  }, [isRecording]);
+  }, [isRecording, stopRecording]);
 
   const startRecording = async () => {
     setError('');
@@ -115,16 +126,7 @@ export function TimeCapsule() {
     }
   };
 
-  const stopRecording = () => {
-    setIsRecording(false);
-    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
-      mediaRecorderRef.current.stop();
-    }
-    if (cameraStream) {
-      cameraStream.getTracks().forEach((track) => track.stop());
-      setCameraStream(null);
-    }
-  };
+
 
   const saveCapsule = () => {
     const selfMsg: CapsuleMessage = {

@@ -68,7 +68,7 @@ export function Navbar() {
                     : 'text-forest-deep/85 hover:bg-forest-action/10 hover:text-forest-deep'
                 }`}
               >
-                <span className="text-sm lively-emoji">{item.icon}</span>
+                <span className="text-sm lively-emoji" aria-hidden="true">{item.icon}</span>
                 {item.label}
               </Link>
             );
@@ -111,7 +111,7 @@ export function Navbar() {
                       onClick={() => setProfileDropdownOpen(false)}
                       className="flex items-center gap-2 px-3 py-2 text-xs font-medium text-forest-deep hover:bg-forest-action/10 rounded-lg transition-colors mt-1"
                     >
-                      👤 View Profile
+                      <span aria-hidden="true">👤</span> View Profile
                     </Link>
                     <button
                       onClick={() => {
@@ -121,7 +121,7 @@ export function Navbar() {
                       disabled={isSigningOut}
                       className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium text-earth-coral hover:bg-earth-coral/10 rounded-lg transition-colors text-left"
                     >
-                      ↩ {isSigningOut ? 'Signing out...' : 'Sign Out'}
+                      <span aria-hidden="true">↩</span> {isSigningOut ? 'Signing out...' : 'Sign Out'}
                     </button>
                   </div>
                 </>
@@ -135,7 +135,7 @@ export function Navbar() {
             className="lg:hidden p-2 rounded-xl hover:bg-forest-action/10 text-forest-deep transition-all"
             aria-label="Toggle navigation menu"
           >
-            <span className="text-xl">{mobileMenuOpen ? '✕' : '☰'}</span>
+            <span className="text-xl" aria-hidden="true">{mobileMenuOpen ? '✕' : '☰'}</span>
           </button>
         </div>
       </div>
@@ -163,7 +163,7 @@ export function Navbar() {
                         : 'text-forest-deep hover:bg-forest-action/10'
                     }`}
                   >
-                    <span className="text-base">{item.icon}</span>
+                    <span className="text-base" aria-hidden="true">{item.icon}</span>
                     {item.label}
                   </Link>
                 );
@@ -194,7 +194,7 @@ export function Navbar() {
                   disabled={isSigningOut}
                   className="px-3 py-1.5 rounded-xl border border-earth-coral/30 hover:border-earth-coral text-xs font-semibold text-earth-coral hover:bg-earth-coral/10 transition-all"
                 >
-                  ↩ {isSigningOut ? 'Signing out...' : 'Sign Out'}
+                  <span aria-hidden="true">↩</span> {isSigningOut ? 'Signing out...' : 'Sign Out'}
                 </button>
               </div>
             )}

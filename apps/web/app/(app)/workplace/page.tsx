@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/providers/AuthProvider';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -59,7 +59,7 @@ export default function WorkplacePage() {
   const [offsetLoadingId, setOffsetLoadingId] = useState<string | null>(null);
   const [offsetSuccessMsg, setOffsetSuccessMsg] = useState('');
 
-  async function fetchOrgData() {
+  const fetchOrgData = useCallback(async () => {
     if (!user) return;
     try {
       setLoading(true);
@@ -79,11 +79,11 @@ export default function WorkplacePage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [user]);
 
   useEffect(() => {
     fetchOrgData();
-  }, [user]);
+  }, [fetchOrgData]);
 
   async function handleJoin(e: React.FormEvent) {
     e.preventDefault();

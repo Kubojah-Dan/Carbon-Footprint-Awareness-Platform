@@ -1,0 +1,7 @@
+{
+  "extends": "expo",
+  "rules": {
+    "import/namespace": "off",
+    "import/no-unresolved": "off"
+  }
+}

@@ -32,7 +32,7 @@ export default function ChallengesPage() {
   // Fetch real user activity logs for progress tracking (last 30 days)
   const { logs } = useLogs(uid, 30);
 
-  const fetchChallengesAndTeams = async () => {
+  const fetchChallengesAndTeams = useCallback(async () => {
     if (!uid) return;
     try {
       setLoading(true);
@@ -54,7 +54,7 @@ export default function ChallengesPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [uid]);
 
   useEffect(() => {
     if (uid) {
@@ -66,7 +66,7 @@ export default function ChallengesPage() {
       if (localJoined) setJoinedChallengeIds(JSON.parse(localJoined));
       if (localCompleted) setCompletedChallengeIds(JSON.parse(localCompleted));
     }
-  }, [uid]);
+  }, [uid, fetchChallengesAndTeams]);
 
   const handleJoinChallenge = (challengeId: string) => {
     if (!uid) return;
