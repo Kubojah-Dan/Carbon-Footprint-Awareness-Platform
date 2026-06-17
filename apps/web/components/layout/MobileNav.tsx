@@ -25,10 +25,10 @@ export function MobileNav() {
 
   return (
     <nav
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-[200] bg-forest-deep border-t border-border-dark"
+      className="lg:hidden fixed bottom-5 left-4 right-4 z-[200] bg-white/45 backdrop-blur-2xl border border-white/30 rounded-[24px] shadow-[0_12px_40px_-4px_rgba(10,35,24,0.12)] max-w-md mx-auto"
       aria-label="Mobile navigation"
     >
-      <div className="flex items-center justify-around px-2 py-2 safe-area-inset-bottom">
+      <div className="flex items-center justify-around px-1.5 py-1.5">
         {mobileNavItems.map((item) => {
           const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
           return (
@@ -38,11 +38,11 @@ export function MobileNav() {
               id={item.id}
               aria-current={isActive ? 'page' : undefined}
               className={[
-                'flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl',
-                'transition-all duration-150 min-w-[56px]',
+                'flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-2xl',
+                'transition-all duration-155 min-w-[52px]',
                 isActive
-                  ? 'text-growth-green'
-                  : 'text-ink-soft hover:text-ink-inverse',
+                  ? 'text-forest-action bg-forest-action/10 scale-105 font-bold'
+                  : 'text-ink-soft hover:text-forest-deep',
               ].join(' ')}
             >
               <span
@@ -56,14 +56,14 @@ export function MobileNav() {
               </span>
               <span
                 className={[
-                  'text-[10px] font-medium font-body leading-none',
-                  isActive ? 'text-growth-green' : '',
+                  'text-[9px] font-bold font-body leading-none',
+                  isActive ? 'text-forest-action' : '',
                 ].join(' ')}
               >
                 {item.label}
               </span>
               {isActive && (
-                <div className="w-1 h-1 rounded-full bg-growth-green mt-0.5" />
+                <div className="w-1 h-1 rounded-full bg-forest-action mt-0.5" />
               )}
             </Link>
           );

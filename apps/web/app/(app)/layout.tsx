@@ -3,8 +3,8 @@
 import React, { useEffect, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/providers/AuthProvider';
-import { Sidebar } from '@/components/layout/Sidebar';
-import { MobileNav, TopNav } from '@/components/layout/MobileNav';
+import { Navbar } from '@/components/layout/Navbar';
+import { MobileNav } from '@/components/layout/MobileNav';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { ChatAssistant } from '@/components/layout/ChatAssistant';
 
@@ -46,7 +46,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
   if (!user || !userProfile || !userProfile.onboardingCompleted) return null;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-tint relative">
+    <div className="flex flex-col h-screen overflow-hidden bg-tint relative">
       {/* Biophilic Glowing Blobs in Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden z-0 opacity-60">
         <div 
@@ -61,19 +61,14 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         <div className="absolute bottom-[20%] left-[10%] w-[400px] h-[400px] rounded-full bg-emerald-200/25 blur-[90px]" />
       </div>
 
-      {/* Desktop sidebar */}
-      <div className="relative z-20 flex-shrink-0">
-        <Sidebar />
-      </div>
+      {/* Unified top navbar */}
+      <Navbar />
 
       {/* Main content area */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden relative z-10">
-        {/* Mobile top nav */}
-        <TopNav />
-
         <main
           id="main-content"
-          className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 pb-24 lg:pb-8 relative"
+          className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 pb-36 lg:pb-8 relative"
           aria-label="Main content"
         >
           {children}

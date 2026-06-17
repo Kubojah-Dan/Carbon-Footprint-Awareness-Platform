@@ -14,10 +14,10 @@ interface CardProps {
 }
 
 const variantClasses = {
-  default: 'bg-white/50 backdrop-blur-lg border border-[#D1E8D9]/40 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:border-emerald-500/20 transition-all duration-300',
-  dark: 'bg-[#132B1F]/70 backdrop-blur-lg border border-[#2D4A38]/40 shadow-[0_4px_20px_rgba(0,0,0,0.05)]',
-  glass: 'bg-white/30 backdrop-blur-xl border border-[#D1E8D9]/30 shadow-sm hover:shadow-md hover:border-emerald-500/30 transition-all duration-300',
-  elevated: 'bg-white/65 backdrop-blur-lg border border-[#D1E8D9]/50 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:border-emerald-500/30 transition-all duration-300',
+  default: 'bg-white/40 backdrop-blur-xl border border-[#D1E8D9]/50 shadow-[0_8px_32px_0_rgba(10,35,24,0.04)] hover:shadow-[0_12px_40px_0_rgba(77,184,122,0.1)] hover:border-emerald-500/35 transition-all duration-300',
+  dark: 'bg-[#132B1F]/60 backdrop-blur-xl border border-[#2D4A38]/30 shadow-[0_8px_32px_rgba(10,35,24,0.08)]',
+  glass: 'bg-white/25 backdrop-blur-2xl border border-white/30 shadow-[0_8px_32px_0_rgba(10,35,24,0.03)] hover:shadow-[0_12px_40px_0_rgba(77,184,122,0.12)] hover:border-emerald-400/40 transition-all duration-300',
+  elevated: 'bg-white/55 backdrop-blur-xl border border-[#D1E8D9]/60 shadow-[0_12px_36px_rgba(10,35,24,0.05)] hover:shadow-[0_16px_48px_rgba(77,184,122,0.15)] hover:-translate-y-0.5 hover:border-emerald-500/40 transition-all duration-300',
 };
 
 const paddingClasses = {
@@ -48,7 +48,7 @@ export function Card({
       onClick={onClick}
       onKeyDown={isInteractive ? (e) => e.key === 'Enter' && onClick?.() : undefined}
       className={[
-        'rounded-lg',
+        'rounded-2xl',
         variantClasses[variant],
         paddingClasses[padding],
         isInteractive ? 'cursor-pointer transition-all duration-200 hover:-translate-y-0.5' : '',

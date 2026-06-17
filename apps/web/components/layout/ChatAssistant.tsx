@@ -159,7 +159,7 @@ export function ChatAssistant() {
         onClick={handleToggle}
         id="btn-chat-trigger"
         aria-label="Open Arbor AI Assistant"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-forest-action text-white flex items-center justify-center shadow-lg hover:shadow-glow hover:scale-105 active:scale-95 transition-all duration-300 group border border-white/20"
+        className="fixed bottom-[100px] lg:bottom-6 right-4 lg:right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-forest-action text-white flex items-center justify-center shadow-lg hover:shadow-glow hover:scale-105 active:scale-95 transition-all duration-300 group border border-white/20"
       >
         <span className="text-2xl lively-emoji group-hover:rotate-12 transition-transform duration-300">🦉</span>
         {/* Pulsing indicator ring */}
@@ -170,7 +170,7 @@ export function ChatAssistant() {
       {isOpen && (
         <div 
           id="chat-assistant-window"
-          className="fixed bottom-24 right-6 z-50 w-[360px] sm:w-[400px] h-[500px] max-h-[80vh] flex flex-col glass-card shadow-2xl border border-emerald-300/30 overflow-hidden animate-slide-up rounded-2xl select-none"
+          className="fixed bottom-[168px] lg:bottom-24 left-4 lg:left-auto right-4 lg:right-6 z-50 w-auto lg:w-[400px] h-[450px] lg:h-[500px] max-h-[55vh] lg:max-h-[80vh] flex flex-col glass-card shadow-2xl border border-emerald-300/30 overflow-hidden animate-slide-up rounded-2xl select-none"
         >
           {/* Header */}
           <div className="bg-forest-deep/95 text-white px-4 py-3 flex items-center justify-between border-b border-[#1A4A2E]/20 flex-shrink-0">
