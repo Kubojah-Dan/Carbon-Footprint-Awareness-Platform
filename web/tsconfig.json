@@ -16,11 +16,12 @@
     "jsx": "preserve",
     "incremental": true,
     "plugins": [{ "name": "next" }],
+    "types": ["@testing-library/jest-dom"],
     "paths": {
       "@/*": ["./*"],
-      "@earthprint/types": ["../../packages/types/src/index.ts"],
-      "@earthprint/ui": ["../../packages/ui/src/index.ts"],
-      "@earthprint/emission-engine": ["../../packages/emission-engine/src/index.ts"]
+      "@earthprint/types": ["../packages/types/src/index.ts"],
+      "@earthprint/ui": ["../packages/ui/src/index.ts"],
+      "@earthprint/emission-engine": ["../packages/emission-engine/src/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

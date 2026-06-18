@@ -3,21 +3,26 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { navItems, profileNavItem } from '@/lib/nav-items';
 
-interface MobileNavItem {
-  href: string;
-  label: string;
-  icon: string;
-  id: string;
-}
+// Curated subset for the compact mobile bottom bar with shortened labels
+const MOBILE_NAV_HREFS = ['/dashboard', '/log', '/awareness', '/challenges', '/community'];
 
-const mobileNavItems: MobileNavItem[] = [
-  { href: '/dashboard', label: 'Home', icon: '🌿', id: 'mobile-nav-dashboard' },
-  { href: '/log', label: 'Log', icon: '📋', id: 'mobile-nav-log' },
-  { href: '/awareness', label: 'Awareness', icon: '🌍', id: 'mobile-nav-awareness' },
-  { href: '/challenges', label: 'Challenges', icon: '🏆', id: 'mobile-nav-challenges' },
-  { href: '/community', label: 'Community', icon: '🤝', id: 'mobile-nav-community' },
-  { href: '/profile', label: 'Profile', icon: '👤', id: 'mobile-nav-profile' },
+const SHORT_LABELS: Record<string, string> = {
+  '/dashboard': 'Home',
+  '/log': 'Log',
+  '/awareness': 'Awareness',
+  '/challenges': 'Challenges',
+  '/community': 'Community',
+};
+
+const mobileNavItems = [
+  ...navItems.filter((item) => MOBILE_NAV_HREFS.includes(item.href)).map((item) => ({
+    ...item,
+    id: `mobile-${item.id}`,
+    label: SHORT_LABELS[item.href] ?? item.label,
+  })),
+  { ...profileNavItem, id: `mobile-${profileNavItem.id}` },
 ];
 
 export function MobileNav() {
@@ -63,7 +68,7 @@ export function MobileNav() {
                 {item.label}
               </span>
               {isActive && (
-                <div className="w-1 h-1 rounded-full bg-forest-action mt-0.5" />
+                <div className="w-1 h-1 rounded-full bg-forest-action mt-0.5" aria-hidden="true" />
               )}
             </Link>
           );

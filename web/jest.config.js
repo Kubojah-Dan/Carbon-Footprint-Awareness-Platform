@@ -13,9 +13,9 @@ const customJestConfig = {
   moduleNameMapper: {
     // Handle module aliases (if you have them in tsconfig.json)
     '^@/(.*)$': '<rootDir>/$1',
-    '^@earthprint/types$': '<rootDir>/../../packages/types/src/index.ts',
-    '^@earthprint/ui$': '<rootDir>/../../packages/ui/src/index.ts',
-    '^@earthprint/emission-engine$': '<rootDir>/../../packages/emission-engine/src/index.ts',
+    '^@earthprint/types$': '<rootDir>/../packages/types/src/index.ts',
+    '^@earthprint/ui$': '<rootDir>/../packages/ui/src/index.ts',
+    '^@earthprint/emission-engine$': '<rootDir>/../packages/emission-engine/src/index.ts',
   },
 };
 

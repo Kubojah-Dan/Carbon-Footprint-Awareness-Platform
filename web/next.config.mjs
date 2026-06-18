@@ -2,9 +2,6 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Use standalone output for Docker/Firebase Hosting deployments
-  output: 'standalone',
-
   // Transpile workspace packages
   transpilePackages: [
     '@earthprint/emission-engine',

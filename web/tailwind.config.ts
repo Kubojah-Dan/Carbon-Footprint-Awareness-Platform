@@ -1,11 +1,11 @@
 import type { Config } from 'tailwindcss';
-import { colors, fonts, fontSizes, spacing, borderRadius, shadows } from '../../packages/ui/src/tokens';
+import { colors, fonts, fontSizes, spacing, borderRadius, shadows } from '../packages/ui/src/tokens';
 
 const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
+    '../packages/ui/src/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
   theme: {

@@ -40,24 +40,27 @@ The platform tracks carbon emissions across the four primary lifestyle categorie
 
 ## 2. Core Architecture & Code Structure
 
-EarthPrint is structured as a **Turborepo monorepo** using npm workspaces. This architecture enforces separation of concerns and facilitates code sharing between the frontend web app, the React Native mobile app, Google Cloud Functions, and shared packages.
+EarthPrint is structured as a **Turborepo monorepo** using npm workspaces. The web application is a fully responsive, mobile-first Next.js 14 app that works across all screen sizes — no separate native app is required.
 
 ### Repository Layout
 
 ```
 Carbon-Footprint-Awareness-Platform/
-├── apps/
-│   ├── web/                # Next.js 14 Web Application (App Router)
-│   │   ├── app/            # App routes (dashboard, logging, awareness)
-│   │   ├── components/     # Custom UI and glassmorphic layouts
-│   │   ├── hooks/          # React hooks (useLogs, useAIRecommendations)
-│   │   └── providers/      # Context providers (AuthProvider)
-│   └── mobile/             # React Native / Expo Mobile Application
-│       ├── src/app/        # App navigation routes (index, explore)
-│       └── src/components/ # Mobile UI components and layouts
+├── web/                    # Next.js 14 Web Application (App Router)
+│   ├── app/                # App routes (dashboard, logging, awareness)
+│   │   ├── (app)/          # Protected routes — all authenticated pages
+│   │   ├── (auth)/         # Login & Signup pages
+│   │   └── api/            # REST API endpoints (Gamification, AI, Community)
+│   ├── components/         # Custom UI and glassmorphic layout components
+│   │   ├── layout/         # Navbar, MobileNav, ChatAssistant
+│   │   ├── awareness/      # 15 sensory & AR awareness hub components
+│   │   └── onboarding/     # Multi-step onboarding wizard
+│   ├── hooks/              # React hooks (useLogs, useAIRecommendations)
+│   ├── lib/                # Shared utilities (Firebase, Vertex AI, nav-items)
+│   └── providers/          # Context providers (AuthProvider)
 ├── packages/
 │   ├── emission-engine/    # Shared package: Carbon calculation math & formulas
-│   ├── ui/                 # Shared package: Reusable design components
+│   ├── ui/                 # Shared package: Reusable design system components
 │   └── types/              # Shared package: Global TypeScript definitions
 ├── functions/              # Firebase / Google Cloud Functions (TypeScript)
 │   └── src/                # BigQuery sync, streak decay checks, weekly tips
@@ -176,8 +179,8 @@ All emission calculations are performed in **kg of CO₂-equivalent (kg CO₂e)*
 
 3. Setup environment variables:
    ```bash
-   cp apps/web/.env.example apps/web/.env.local
-   # Fill in values inside apps/web/.env.local (see Environment Variables below)
+   cp .env.example web/.env.local
+   # Fill in values inside web/.env.local (see Environment Variables below)
    ```
 
 4. Build packages and compile TypeScript:
@@ -205,7 +208,7 @@ All emission calculations are performed in **kg of CO₂-equivalent (kg CO₂e)*
 
 ## 8. Environment Variables
 
-Create `apps/web/.env.local` with the following variables:
+Create `web/.env.local` with the following variables:
 
 ```bash
 # Firebase Client SDK Credentials
