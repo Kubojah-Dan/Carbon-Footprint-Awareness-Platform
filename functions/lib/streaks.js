@@ -51,7 +51,7 @@ exports.checkDailyStreaksAndNotify = (0, scheduler_1.onSchedule)({
     timeZone: 'UTC',
     memory: '512MiB',
     timeoutSeconds: 300,
-}, async (event) => {
+}, async () => {
     const db = admin.firestore();
     const messaging = admin.messaging();
     const todayStr = new Date().toISOString().split('T')[0];

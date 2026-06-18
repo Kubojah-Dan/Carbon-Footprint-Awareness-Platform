@@ -22,7 +22,7 @@ export const regenerateWeeklyTips = onSchedule(
     // Access the Gemini API key from environment variables or Google Secret Manager
     secrets: ['GEMINI_API_KEY'],
   },
-  async (event) => {
+  async () => {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.error('GEMINI_API_KEY secret is not set.');

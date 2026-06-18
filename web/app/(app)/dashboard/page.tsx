@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
-import type { Metadata } from 'next';
 import { useAuth } from '@/providers/AuthProvider';
 import { useLogs } from '@/hooks/useLogs';
 import { useAIRecommendations } from '@/hooks/useAIRecommendations';
@@ -11,16 +10,13 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { Button } from '@/components/ui/Button';
 import { analytics } from '@/lib/analytics';
 import Link from 'next/link';
-import type { AIRecommendation, LogEntry } from '@earthprint/types';
 import { EcosystemAvatar } from '@/components/ui/EcosystemAvatar';
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+
+// Centralized sub-component imports
+import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
+import { CarbonHistoryChart } from '@/components/dashboard/CarbonHistoryChart';
+import { RecommendationCard } from '@/components/dashboard/RecommendationCard';
+import { LogEntryRow } from '@/components/dashboard/LogEntryRow';
 
 const CATEGORY_CONFIG = {
   travel: { icon: '🚗', label: 'Travel', color: '#3B82F6', bgClass: 'category-bg-travel', textClass: 'category-travel' },
@@ -64,7 +60,6 @@ const ECO_FACTS = [
 
 export default function DashboardPage() {
   const { user, userProfile } = useAuth();
-  // Fetch 180 days of logs for 6-month historical AreaChart
   const { logs, loading: logsLoading } = useLogs(user?.uid, 180);
   const { recommendations, loading: aiLoading, refresh: refreshAI, submitFeedback } = useAIRecommendations(user?.uid);
 
@@ -78,10 +73,12 @@ export default function DashboardPage() {
   useEffect(() => {
     setMounted(true);
     const index = new Date().getDate() % ECO_FACTS.length;
-    setFact(ECO_FACTS[index]!);
+    const selectedFact = ECO_FACTS[index];
+    if (selectedFact) {
+      setFact(selectedFact);
+    }
   }, []);
 
-  // Compute 30-day (current month) logs and summary in memory
   const currentMonthLogs = useMemo(() => {
     const startOfMonth = new Date();
     startOfMonth.setDate(1);
@@ -117,12 +114,9 @@ export default function DashboardPage() {
   const targetProgress = Math.min(100, (currentMonthKg / monthlyTarget) * 100);
 
   const recentLogs = useMemo(() => logs.slice(0, 5), [logs]);
-
   const firstName = userProfile?.displayName?.split(' ')[0] ?? 'there';
-
   const isDemoData = logs.length === 0;
 
-  // Process data for chart
   const chartData = useMemo(() => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const now = new Date();
@@ -150,7 +144,6 @@ export default function DashboardPage() {
       }));
     }
 
-    // Fallback baseline trend
     for (let i = 5; i >= 0; i--) {
       const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
       const name = `${months[d.getMonth()]} ${d.getFullYear().toString().slice(-2)}`;
@@ -159,38 +152,22 @@ export default function DashboardPage() {
     return trend;
   }, [logs, isDemoData]);
 
-  // Track dashboard view
   useEffect(() => {
     analytics.dashboardViewed();
   }, []);
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
-      {/* ── Greeting ──────────────────────────────────────────────────────── */}
-      <div className="flex items-start justify-between">
-        <div>
-          <h1 className="font-display text-3xl text-ink">
-            Hey {firstName} 👋
-          </h1>
-          <p className="text-ink-soft mt-1">
-            {new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}
-          </p>
-        </div>
-        <Link href="/log/new" id="dashboard-add-log">
-          <Button variant="primary" leftIcon={<span>+</span>} size="md">
-            Log Activity
-          </Button>
-        </Link>
-      </div>
+      {/* Dashboard Greeting Header */}
+      <DashboardHeader firstName={firstName} />
 
-      {/* ── Living Ecosystem Avatar ── */}
+      {/* Living Ecosystem Avatar Biome Card */}
       <Card className="relative overflow-hidden h-[280px] border-none bg-forest-deep shadow-glow">
         <EcosystemAvatar
           biome={userProfile?.activeBiome || 'temperate-forest'}
           terraScore={userProfile?.terraScore ?? 75}
           className="absolute inset-0 z-0"
         />
-        {/* Overlay info */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 flex flex-col justify-between p-6 z-10 select-none">
           <div className="flex justify-between items-start">
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-white text-xs font-semibold">
@@ -239,7 +216,7 @@ export default function DashboardPage() {
         </div>
       </Card>
 
-      {/* ── Earth Awareness Hub Shortcut Banner ── */}
+      {/* Earth Awareness Hub Shortcut Banner */}
       <Card className="bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent border-emerald-300/20 p-4 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
         <div className="flex items-center gap-3">
           <span className="text-3xl select-none">🌍</span>
@@ -255,9 +232,8 @@ export default function DashboardPage() {
         </Link>
       </Card>
 
-      {/* ── Monthly Overview ───────────────────────────────────────────────── */}
+      {/* Monthly Overview Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Monthly progress card */}
         <div className="md:col-span-2">
           <Card id="monthly-progress-card">
             <CardHeader>
@@ -292,7 +268,6 @@ export default function DashboardPage() {
                     size="lg"
                   />
 
-                  {/* Category breakdown mini */}
                   <div className="grid grid-cols-4 gap-3 mt-5">
                     {(Object.keys(CATEGORY_CONFIG) as Array<keyof typeof CATEGORY_CONFIG>).map((cat) => {
                       const config = CATEGORY_CONFIG[cat];
@@ -317,7 +292,6 @@ export default function DashboardPage() {
           </Card>
         </div>
 
-        {/* Points & streak card */}
         <div className="space-y-4">
           <Card id="points-card">
             <CardContent className="text-center py-2">
@@ -348,58 +322,17 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* ── Visual Insights & Education ───────────────────────────────────── */}
+      {/* Visual Insights & Daily Fact */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Carbon Trend History Chart */}
         <div className="md:col-span-2">
-          <Card className="glass-card h-[290px] flex flex-col justify-between">
-            <CardHeader className="block pb-0">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-base font-bold text-ink">Carbon History Trend</CardTitle>
-                {isDemoData && (
-                  <span className="text-[10px] font-mono font-bold bg-[#E8960A]/15 text-[#E8960A] px-2 py-0.5 rounded-full">
-                    Demo Mode
-                  </span>
-                )}
-              </div>
-              <p className="text-xs text-ink-soft">
-                {isDemoData ? 'Simulating monthly footprint progression.' : 'Your 6-month historical carbon emissions trend.'}
-              </p>
-            </CardHeader>
-            <CardContent className="flex-1 w-full pt-2">
-              {mounted && !logsLoading ? (
-                <div className="h-44 w-full">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
-                      <defs>
-                        <linearGradient id="dashboardTrendGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#4DB87A" stopOpacity={0.25} />
-                          <stop offset="95%" stopColor="#4DB87A" stopOpacity={0} />
-                        </linearGradient>
-                      </defs>
-                      <XAxis dataKey="name" tick={{ fontSize: 9, fill: '#5A7060' }} stroke="#D1E8D9" />
-                      <YAxis tick={{ fontSize: 9, fill: '#5A7060' }} stroke="#D1E8D9" />
-                      <Tooltip 
-                        contentStyle={{ 
-                          background: 'rgba(255, 255, 255, 0.95)', 
-                          border: '1px solid #D1E8D9',
-                          borderRadius: '12px',
-                          fontSize: '11px',
-                          color: '#0F1C14'
-                        }} 
-                      />
-                      <Area type="monotone" dataKey="Emissions" stroke="#2D7A4F" strokeWidth={2} fillOpacity={1} fill="url(#dashboardTrendGrad)" />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-              ) : (
-                <Skeleton className="h-44 w-full rounded-xl" />
-              )}
-            </CardContent>
-          </Card>
+          {/* Carbon History AreaChart Component */}
+          <CarbonHistoryChart
+            chartData={chartData}
+            isDemoData={isDemoData}
+            mounted={mounted && !logsLoading}
+          />
         </div>
 
-        {/* Daily Eco-Awareness Fact Card */}
         <div>
           <Card className="glass-card h-[290px] flex flex-col justify-between bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/10 border-emerald-300/30">
             <CardHeader className="block pb-0">
@@ -419,7 +352,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* ── AI Recommendations ─────────────────────────────────────────────── */}
+      {/* AI Recommendations Action Plan */}
       <div id="ai-recommendations-section">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-display text-2xl text-ink">Your AI Action Plan</h2>
@@ -467,7 +400,7 @@ export default function DashboardPage() {
         )}
       </div>
 
-      {/* ── Recent Activity ────────────────────────────────────────────────── */}
+      {/* Recent Activity Logs */}
       <div id="recent-activity-section">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-display text-2xl text-ink">Recent Activity</h2>
@@ -514,104 +447,3 @@ export default function DashboardPage() {
   );
 }
 
-// ─── Sub-components ──────────────────────────────────────────────────────────
-
-function RecommendationCard({
-  rec,
-  index,
-  onFeedback,
-}: {
-  rec: AIRecommendation;
-  index: number;
-  onFeedback: (id: string, feedback: 'helpful' | 'not-relevant') => Promise<void>;
-}) {
-  const config = CATEGORY_CONFIG[rec.category as keyof typeof CATEGORY_CONFIG] ?? CATEGORY_CONFIG.travel;
-
-  const effortLabels = { low: '⚡ Low effort', medium: '💪 Medium', high: '🏋 High effort' };
-  const costLabels = {
-    'saves-money': '💰 Saves money',
-    'cost-neutral': '↔ Cost neutral',
-    'small-cost': '💶 Small cost',
-    'significant-cost': '💸 Significant cost',
-  };
-
-  function handleFeedback(fb: 'helpful' | 'not-relevant') {
-    analytics.tipFeedback(rec.id, fb);
-    onFeedback(rec.id, fb);
-  }
-
-  return (
-    <Card id={`rec-card-${index}`} variant="elevated" className="flex flex-col">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-2xl">{config.icon}</span>
-        <div className="flex gap-1.5">
-          <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${config.bgClass} ${config.textClass}`}>
-            {config.label}
-          </span>
-          <span className="text-xs px-2 py-0.5 rounded-full bg-pale-green text-forest-deep font-medium">
-            −{Math.round(rec.monthlyCo2Saving)} kg/mo
-          </span>
-        </div>
-      </div>
-
-      <h3 className="font-semibold text-ink text-base mb-2 leading-snug">{rec.title}</h3>
-      <p className="text-sm text-ink-soft leading-relaxed flex-1 mb-4">{rec.description}</p>
-
-      <div className="flex gap-1.5 mb-4 flex-wrap">
-        <span className="text-xs text-ink-soft">{effortLabels[rec.effortLevel]}</span>
-        <span className="text-xs text-ink-soft">·</span>
-        <span className="text-xs text-ink-soft">{costLabels[rec.costImpact]}</span>
-      </div>
-
-      {!rec.userFeedback ? (
-        <div className="flex gap-2">
-          <Button
-            id={`btn-tip-helpful-${index}`}
-            variant="secondary"
-            size="sm"
-            fullWidth
-            onClick={() => handleFeedback('helpful')}
-          >
-            👍 Helpful
-          </Button>
-          <Button
-            id={`btn-tip-not-relevant-${index}`}
-            variant="ghost"
-            size="sm"
-            fullWidth
-            onClick={() => handleFeedback('not-relevant')}
-          >
-            Not relevant
-          </Button>
-        </div>
-      ) : (
-        <p className="text-xs text-center text-ink-soft">
-          {rec.userFeedback === 'helpful' ? '👍 Thanks for the feedback!' : '✓ We\'ll show you different tips next time'}
-        </p>
-      )}
-    </Card>
-  );
-}
-
-function LogEntryRow({ log }: { log: LogEntry }) {
-  const config = CATEGORY_CONFIG[log.category] ?? CATEGORY_CONFIG.travel;
-  const date = new Date(log.activityDate);
-  const dayLabel = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-
-  return (
-    <div className="flex items-center gap-4 p-4 hover:bg-tint/50 transition-colors">
-      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${config.bgClass} shrink-0`}>
-        <span className="text-xl">{config.icon}</span>
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-ink truncate">{log.source}</p>
-        <p className="text-xs text-ink-soft">{config.label} · {dayLabel}</p>
-      </div>
-      <div className="text-right shrink-0">
-        <p className={`text-sm font-mono font-bold ${config.textClass}`}>
-          {log.kgCo2e.toFixed(1)} kg
-        </p>
-      </div>
-    </div>
-  );
-}

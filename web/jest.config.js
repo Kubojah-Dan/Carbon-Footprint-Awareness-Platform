@@ -5,7 +5,6 @@ const createJestConfig = nextJest({
   dir: './',
 });
 
-// Add any custom config to be passed to Jest
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
@@ -16,6 +15,16 @@ const customJestConfig = {
     '^@earthprint/types$': '<rootDir>/../packages/types/src/index.ts',
     '^@earthprint/ui$': '<rootDir>/../packages/ui/src/index.ts',
     '^@earthprint/emission-engine$': '<rootDir>/../packages/emission-engine/src/index.ts',
+  },
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coverageThreshold: {
+    global: {
+      branches: 40,
+      functions: 60,
+      lines: 75,
+      statements: 75,
+    },
   },
 };
 

@@ -1,34 +1,36 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAdminDb } from '@/lib/firebase-admin';
+import { z } from 'zod';
+import { UserService } from '@/services/user.service';
+
+const fcmTokenSchema = z.object({
+  uid: z.string().min(1, 'uid is required'),
+  fcmToken: z.string().min(1, 'fcmToken is required'),
+});
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const { uid, fcmToken } = body;
-
-    if (!uid || !fcmToken) {
+    const body = await req.json().catch(() => ({}));
+    
+    // Validate request body using Zod
+    const parsed = fcmTokenSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, error: 'Both uid and fcmToken are required' },
+        { success: false, error: parsed.error.errors[0]?.message || 'Invalid request body' },
         { status: 400 }
       );
     }
 
-    const db = getAdminDb();
-    const userRef = db.collection('users').doc(uid);
-    const doc = await userRef.get();
+    const { uid, fcmToken } = parsed.data;
 
-    if (!doc.exists) {
+    // Delegate database action to UserService
+    const success = await UserService.registerFcmToken(uid, fcmToken);
+
+    if (!success) {
       return NextResponse.json(
         { success: false, error: 'User profile not found' },
         { status: 404 }
       );
     }
-
-    await userRef.update({
-      fcmToken: fcmToken,
-      notificationsEnabled: true,
-      updatedAt: new Date().toISOString(),
-    });
 
     return NextResponse.json({
       success: true,
@@ -42,3 +44,4 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+

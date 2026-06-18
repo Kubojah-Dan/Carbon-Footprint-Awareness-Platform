@@ -77,12 +77,17 @@ export function calculateTransportEmission(
 
   const kgCo2e = factor.kgCo2ePerPassengerKm * distanceKm * passengerMultiplier;
 
-  return {
+  const result: TransportCalculationResult = {
     kgCo2e: Math.round(kgCo2e * 1000) / 1000, // Round to 3 decimal places
     factorUsed: factor.kgCo2ePerPassengerKm,
     factorSource: factor.dataSource,
-    notes: factor.notes,
   };
+
+  if (factor.notes) {
+    result.notes = factor.notes;
+  }
+
+  return result;
 }
 
 /** Returns true for vehicle modes where passengers share the total emission */

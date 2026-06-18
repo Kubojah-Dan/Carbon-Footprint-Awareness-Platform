@@ -17,13 +17,16 @@ function getBigQueryClient() {
                 privateKey = `-----BEGIN PRIVATE KEY-----\n${privateKey}\n-----END PRIVATE KEY-----`;
             }
         }
-        const credentials = (process.env.FIREBASE_ADMIN_CLIENT_EMAIL && privateKey)
-            ? { client_email: process.env.FIREBASE_ADMIN_CLIENT_EMAIL, private_key: privateKey }
-            : undefined;
-        bigquery = new bigquery_1.BigQuery({
+        const options = {
             projectId: PROJECT_ID,
-            credentials,
-        });
+        };
+        if (process.env.FIREBASE_ADMIN_CLIENT_EMAIL && privateKey) {
+            options.credentials = {
+                client_email: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
+                private_key: privateKey,
+            };
+        }
+        bigquery = new bigquery_1.BigQuery(options);
     }
     return bigquery;
 }

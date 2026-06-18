@@ -1,60 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
+import { AiService } from '@/services/ai.service';
+import { isRateLimited } from '@/lib/rate-limiter';
+
+const journalSchema = z.object({
+  entryText: z.string().min(1, 'entryText is required'),
+});
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.GROQ_API_KEY;
-    if (!apiKey) {
+    const body = await req.json().catch(() => ({}));
+    
+    // Validate request body using Zod
+    const parsed = journalSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, error: 'Groq API Key is not configured.' },
-        { status: 500 }
-      );
-    }
-
-    const { entryText } = await req.json().catch(() => ({}));
-    if (!entryText || typeof entryText !== 'string') {
-      return NextResponse.json(
-        { success: false, error: 'entryText is required' },
+        { success: false, error: parsed.error.errors[0]?.message || 'Invalid request body' },
         { status: 400 }
       );
     }
 
-    const systemPrompt = `You are the voice of the Earth—wise, nurturing, warm, and deeply appreciative.
-Your goal is to reflect on the user's Earth Gratitude Journal entry. Provide a brief, supportive, and biophilic response (1-2 sentences) that highlights their awareness of nature's gifts, reciprocity, and connection.
-Never mention statistics, carbon metrics, or guidelines. Speak directly to their heart. Keep it poetic and concise.`;
+    const { entryText } = parsed.data;
 
-    const groqPayload = {
-      model: 'llama-3.3-70b-versatile',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: `Here is my journal entry: "${entryText.trim()}"` }
-      ],
-      temperature: 0.7,
-      max_tokens: 128,
-    };
-
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(groqPayload),
-    });
-
-    if (!response.ok) {
-      const errVal = await response.json().catch(() => ({}));
+    // Apply Rate Limiting (30 requests per hour)
+    const ip = req.ip ?? req.headers.get('x-forwarded-for') ?? '127.0.0.1';
+    const limitRes = isRateLimited(`journal_${ip}`, 30, 3600000);
+    
+    if (limitRes.limited) {
       return NextResponse.json(
-        { success: false, error: errVal.error?.message || 'Groq API communication failed' },
-        { status: response.status }
+        { success: false, error: 'Too many requests. Please try again in an hour.' },
+        { 
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': '30',
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': String(limitRes.reset)
+          }
+        }
       );
     }
 
-    const resData = await response.json();
-    const reflection = resData.choices?.[0]?.message?.content || 'Thank you for pausing to appreciate the soil and skies. When you care for the Earth, the Earth feels your heartbeat.';
+    // Delegate logic to AiService
+    const reflection = await AiService.generateGratitudeReflection(entryText);
 
     return NextResponse.json({
       success: true,
-      reflection: reflection.trim(),
+      reflection,
     });
   } catch (error: any) {
     console.error('[ai/journal] Error analyzing entry:', error);
@@ -64,3 +55,4 @@ Never mention statistics, carbon metrics, or guidelines. Speak directly to their
     );
   }
 }
+

@@ -40,33 +40,42 @@ The platform tracks carbon emissions across the four primary lifestyle categorie
 
 ## 2. Core Architecture & Code Structure
 
-EarthPrint is structured as a **Turborepo monorepo** using npm workspaces. The web application is a fully responsive, mobile-first Next.js 14 app that works across all screen sizes — no separate native app is required.
+EarthPrint is structured as a **Turborepo monorepo** using npm workspaces. The web application is a fully responsive, mobile-first Next.js 14 app that works across all screen sizes.
+
+### Detailed Architecture & Reference Guides
+
+For deep dives into the platform design, engineering schemas, and security pipelines, review our dedicated specification sheets:
+
+| Guide Sheet | Description | Source Reference |
+| :--- | :--- | :---: |
+| **System Architecture** | Structural layout of workspaces, matrix setup, and sequence data flows | [docs/architecture.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/architecture.md) |
+| **Database Schema** | Firestore collection trees, sub-collection hierarchy, and model schemas | [docs/database-schema.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/database-schema.md) |
+| **REST API Reference** | REST endpoints contract specifications, request/response models, and status codes | [docs/api-reference.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/api-reference.md) |
+| **Security Specifications** | Content Security Policy (CSP), sliding-window rate limit buckets, and Firestore database policies | [docs/security.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/security.md) |
+| **Testing Strategy** | Test harness, Jest coverage thresholds gates, and verification execution | [docs/testing-strategy.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/testing-strategy.md) |
 
 ### Repository Layout
 
 ```
 Carbon-Footprint-Awareness-Platform/
 ├── web/                    # Next.js 14 Web Application (App Router)
-│   ├── app/                # App routes (dashboard, logging, awareness)
-│   │   ├── (app)/          # Protected routes — all authenticated pages
-│   │   ├── (auth)/         # Login & Signup pages
-│   │   └── api/            # REST API endpoints (Gamification, AI, Community)
-│   ├── components/         # Custom UI and glassmorphic layout components
-│   │   ├── layout/         # Navbar, MobileNav, ChatAssistant
-│   │   ├── awareness/      # 15 sensory & AR awareness hub components
-│   │   └── onboarding/     # Multi-step onboarding wizard
-│   ├── hooks/              # React hooks (useLogs, useAIRecommendations)
-│   ├── lib/                # Shared utilities (Firebase, Vertex AI, nav-items)
-│   └── providers/          # Context providers (AuthProvider)
+│   ├── app/                # App routes, layouts, and endpoints
+│   ├── components/         # Custom UI components (split & modular)
+│   │   ├── dashboard/      # Split dashboard sub-components
+│   │   ├── layout/         # Header navigation & bottom action bar
+│   │   └── awareness/      # 15 immersive biophilic components
+│   ├── services/           # Services layer (AI, User Profile, Gamification)
+│   ├── hooks/              # Context Hooks (useLogs, useUserProfile)
+│   ├── lib/                # Config maps (Firebase, Rate-limiting, Analytics)
+│   └── providers/          # React Context Providers (AuthProvider)
 ├── packages/
-│   ├── emission-engine/    # Shared package: Carbon calculation math & formulas
-│   ├── ui/                 # Shared package: Reusable design system components
-│   └── types/              # Shared package: Global TypeScript definitions
-├── functions/              # Firebase / Google Cloud Functions (TypeScript)
-│   └── src/                # BigQuery sync, streak decay checks, weekly tips
-├── data/                   # Emission factor JSON databases + seed configurations
-├── firestore/              # Firestore database rules, indexes, and schemas
-└── docs/                   # Platform architecture, setup, and methodology guides
+│   ├── emission-engine/    # Statically loaded factors calculations domain library
+│   ├── ui/                 # Shared design system components & tokens
+│   └── types/              # Unified TypeScript definitions
+├── functions/              # Firebase Cloud Functions (v2 schedulers & triggers)
+├── data/                   # JSON factors databases & Firestore seeds
+├── firestore/              # Firestore database security rules (`firestore.rules`)
+└── docs/                   # Systems, API, Security, and Testing specifications
 ```
 
 ---
@@ -292,5 +301,18 @@ SENTRY_PROJECT=your_sentry_project_here
 1. **Radiative Forcing for Flights**: A multiplier of 1.9x is applied to flight CO₂ emissions to account for non-CO₂ warming effects at altitude.
 2. **Second-Hand Goods**: Second-hand purchases are assumed to have 0 production emissions.
 3. **Grace Day Reset**: The weekly grace day resets every Sunday at 00:00:00 local time.
+
+---
+
+## 11. Accessibility & LinkedIn Showcase Alternative Text
+
+To satisfy WCAG accessibility standards and assist screen-readers, here are alternative text descriptions for the EarthPrint LinkedIn showcase screenshots:
+
+* **Showcase Screen 1 (Dashboard Page):** 
+  > "Alternative Text: A screenshot showing the EarthPrint main dashboard using a Forest Deep HSL theme. The view displays a personalized greeting, a high-contrast circular progress chart illustrating a 5-day logging streak, a progress bar tracking the current month's carbon limit, and an interactive 6-month historical AreaChart showing emission reductions. Underneath are dynamic, card-based AI carbon-saving recommendations."
+* **Showcase Screen 2 (Earth Awareness Hub - Silence Hour):**
+  > "Alternative Text: A screenshot of the Silence Hour sensory experience. The interface features a dark glassmorphic container displaying a custom starfield canvas. Star density and brightness scale dynamically based on the user's home energy metrics. An instruction button at the bottom allows users to trigger a weekly 1-hour screen-free digital detox."
+* **Showcase Screen 3 (Carbon Quests & Corridors Map):**
+  > "Alternative Text: A responsive map interface displaying user geolocated pollinator planting coordinates. Pins mark physical locations where users have planted wildflower seeds claimed with Green Points. Visual lines show connecting corridors across neighborhoods, representing shared climate action."
 
 ---

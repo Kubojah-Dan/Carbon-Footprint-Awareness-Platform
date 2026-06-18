@@ -1,8 +1,7 @@
 import {
   calculateBloomPoints,
   calculateTerraScore,
-  evaluateBadges,
-  STARTER_BADGES
+  evaluateBadges
 } from '../src/gamification/bloom-points';
 
 describe('Gamification — Bloom Points', () => {
