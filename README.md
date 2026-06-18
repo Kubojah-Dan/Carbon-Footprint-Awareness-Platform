@@ -2,7 +2,7 @@
 
 **A Carbon Footprint Awareness Platform for Individual Action and Collective Impact**
 
-> *Track your impact. Understand what drives it. Take the actions that matter most.*
+> _Track your impact. Understand what drives it. Take the actions that matter most._
 
 ---
 
@@ -29,12 +29,12 @@
 
 The platform tracks carbon emissions across the four primary lifestyle categories driving individual impacts:
 
-| Category | Share of Individual Emissions | Key Activities |
-|---|---|---|
-| 🚗 Transport | ~27% | Car, flights, public transit |
-| 🌱 Food | ~25% | Diet, food sourcing, waste |
-| 🏠 Home Energy | ~25% | Electricity, heating, cooling |
-| 🛍 Shopping & Services | ~23% | Clothing, electronics, delivery |
+| Category               | Share of Individual Emissions | Key Activities                  |
+| ---------------------- | ----------------------------- | ------------------------------- |
+| 🚗 Transport           | ~27%                          | Car, flights, public transit    |
+| 🌱 Food                | ~25%                          | Diet, food sourcing, waste      |
+| 🏠 Home Energy         | ~25%                          | Electricity, heating, cooling   |
+| 🛍 Shopping & Services | ~23%                          | Clothing, electronics, delivery |
 
 ---
 
@@ -46,13 +46,13 @@ EarthPrint is structured as a **Turborepo monorepo** using npm workspaces. The w
 
 For deep dives into the platform design, engineering schemas, and security pipelines, review our dedicated specification sheets:
 
-| Guide Sheet | Description | Source Reference |
-| :--- | :--- | :---: |
-| **System Architecture** | Structural layout of workspaces, matrix setup, and sequence data flows | [docs/architecture.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/architecture.md) |
-| **Database Schema** | Firestore collection trees, sub-collection hierarchy, and model schemas | [docs/database-schema.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/database-schema.md) |
-| **REST API Reference** | REST endpoints contract specifications, request/response models, and status codes | [docs/api-reference.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/api-reference.md) |
-| **Security Specifications** | Content Security Policy (CSP), sliding-window rate limit buckets, and Firestore database policies | [docs/security.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/security.md) |
-| **Testing Strategy** | Test harness, Jest coverage thresholds gates, and verification execution | [docs/testing-strategy.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/testing-strategy.md) |
+| Guide Sheet                 | Description                                                                                       |                                                Source Reference                                                |
+| :-------------------------- | :------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------: |
+| **System Architecture**     | Structural layout of workspaces, matrix setup, and sequence data flows                            |     [docs/architecture.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/architecture.md)     |
+| **Database Schema**         | Firestore collection trees, sub-collection hierarchy, and model schemas                           |  [docs/database-schema.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/database-schema.md)  |
+| **REST API Reference**      | REST endpoints contract specifications, request/response models, and status codes                 |    [docs/api-reference.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/api-reference.md)    |
+| **Security Specifications** | Content Security Policy (CSP), sliding-window rate limit buckets, and Firestore database policies |         [docs/security.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/security.md)         |
+| **Testing Strategy**        | Test harness, Jest coverage thresholds gates, and verification execution                          | [docs/testing-strategy.md](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/docs/testing-strategy.md) |
 
 ### Repository Layout
 
@@ -85,42 +85,51 @@ Carbon-Footprint-Awareness-Platform/
 For evaluators reviewing this repository, the following core features are fully implemented, typed, compiled, and tested:
 
 ### 3.1 Earth Awareness Hub (`/awareness`)
+
 An immersive tabbed sanctuary introducing exactly **15 sensory, mindful, collective art, and AR awareness features**:
-* **Haptic Heartbeat**: Emits rhythmic heartbeat pulses via the Web Vibration API (`navigator.vibrate`) proportional to the user's `terraScore` health (steady if thriving, irregular if stressed).
-* **Earth Gratitude Journal**: Reframes carbon reduction as gratitude. Integrates a backend endpoint powered by Groq to return biophilic reflections.
-* **The Silence Hour**: A weekly digital detox canvas rendering a starfield where star brightness and density scale in response to recent household energy logs (simulating light pollution).
-* **Planetary Mirror**: Web camera face overlay blending video feeds with active biome vector graphics (foliage branches, ocean ripples).
-* **Carbon Time Capsule**: 30-second promise recorder with countdown to 2030 and a digital vault of international voices.
-* **Echo of Choices**: Photo gallery memory viewer applying carbon filters (amber smog vs. flower blooms) with material micro-stories.
-* **Ancestral Lineage**: Scrollable SVG tapestry illustrating product manufacturing paths (coffee shade farming, recycled aluminum, organic cotton).
-* **Global Mosaic**: 2D Canvas grid rendering 10k action tiles forming a blue whale shape with interactive contributor details.
-* **Community Murmur**: Soundscape mixer blending synthesizer-generated wind, glacier crackles, and unlocked wetland frog sounds.
-* **Carbon Quests (AR)**: Nearby geo-quests spawning a friendly AR Fox providing environmental insights.
-* **Weight of Things (AR)**: Resource overlays visualizing the cleared forests and water drains behind burgers, plastics, and jeans.
-* **Carbon Haiku**: AI-generated 5-7-5 syllable weekly poetry based on user footprint logs.
-* **Carbon Shadows**: Simulated ephemeral public light art installation projecting aggregated community care indices (energy savings, bicycle commutes, and reforestation funding) onto building facades using HTML5 Canvas.
-* **Human Library of Change**: Unscripted video/text exchanges from peers who successfully shifted a habit, highlighting the human journey, struggle, and joy.
-* **Seed Packet Exchange**: Milestone reward system enabling users to claim wildflower seed packets in the mail and geolocate planting coordinates to construct virtual pollinator corridors.
+
+- **Haptic Heartbeat**: Emits rhythmic heartbeat pulses via the Web Vibration API (`navigator.vibrate`) proportional to the user's `terraScore` health (steady if thriving, irregular if stressed).
+- **Earth Gratitude Journal**: Reframes carbon reduction as gratitude. Integrates a backend endpoint powered by Groq to return biophilic reflections.
+- **The Silence Hour**: A weekly digital detox canvas rendering a starfield where star brightness and density scale in response to recent household energy logs (simulating light pollution).
+- **Planetary Mirror**: Web camera face overlay blending video feeds with active biome vector graphics (foliage branches, ocean ripples).
+- **Carbon Time Capsule**: 30-second promise recorder with countdown to 2030 and a digital vault of international voices.
+- **Echo of Choices**: Photo gallery memory viewer applying carbon filters (amber smog vs. flower blooms) with material micro-stories.
+- **Ancestral Lineage**: Scrollable SVG tapestry illustrating product manufacturing paths (coffee shade farming, recycled aluminum, organic cotton).
+- **Global Mosaic**: 2D Canvas grid rendering 10k action tiles forming a blue whale shape with interactive contributor details.
+- **Community Murmur**: Soundscape mixer blending synthesizer-generated wind, glacier crackles, and unlocked wetland frog sounds.
+- **Carbon Quests (AR)**: Nearby geo-quests spawning a friendly AR Fox providing environmental insights.
+- **Weight of Things (AR)**: Resource overlays visualizing the cleared forests and water drains behind burgers, plastics, and jeans.
+- **Carbon Haiku**: AI-generated 5-7-5 syllable weekly poetry based on user footprint logs.
+- **Carbon Shadows**: Simulated ephemeral public light art installation projecting aggregated community care indices (energy savings, bicycle commutes, and reforestation funding) onto building facades using HTML5 Canvas.
+- **Human Library of Change**: Unscripted video/text exchanges from peers who successfully shifted a habit, highlighting the human journey, struggle, and joy.
+- **Seed Packet Exchange**: Milestone reward system enabling users to claim wildflower seed packets in the mail and geolocate planting coordinates to construct virtual pollinator corridors.
 
 ### 3.2 Daily Logging Streak & Grace Days
+
 A split-responsibility gamification engine ensuring habit loops are maintained without user anxiety:
-1. **Decay Check (Daily Load)**: Triggered once per session on page load (`POST /api/v1/gamification/streak`). Evaluates if `daysSinceLastLog >= 2`. If yes, it consumes a weekly Grace Day or resets the streak to 0. It *never* increments on page loads to prevent page-refresh vulnerabilities.
+
+1. **Decay Check (Daily Load)**: Triggered once per session on page load (`POST /api/v1/gamification/streak`). Evaluates if `daysSinceLastLog >= 2`. If yes, it consumes a weekly Grace Day or resets the streak to 0. It _never_ increments on page loads to prevent page-refresh vulnerabilities.
 2. **Increment Check (Logging)**: Handles streak progression when logging a carbon-saving activity. Integrates identical consecutive-day calculators on the client-side (`useLogs.ts` hook) and the server-side transaction (`POST /api/v1/public/logs`). Increments the streak if `daysSinceLastLog === 1` or if a Grace Day saved it, while resetting the Grace coupon on Sundays.
 
 ### 3.3 Strict Onboarding Redirection Flow
+
 Guards the layout of protected pages (`(app)/*`) to ensure complete user profiles:
-* **Zero-Flash Layout Guard**: If a user signs up (Google OAuth or Email) but has not completed the onboarding wizard, they are redirected to `/onboarding`. Stale profile states are protected to prevent the dashboard from rendering before the redirect triggers.
+
+- **Zero-Flash Layout Guard**: If a user signs up (Google OAuth or Email) but has not completed the onboarding wizard, they are redirected to `/onboarding`. Stale profile states are protected to prevent the dashboard from rendering before the redirect triggers.
 
 ### 3.4 Community Commenting & Likes
-* Interactive comments feed on the Community Hive page. Clicking a post expands its replies section, triggering a real-time fetch to display conversations. Synchronized so that replies are shared and updated between friends instantly.
+
+- Interactive comments feed on the Community Hive page. Clicking a post expands its replies section, triggering a real-time fetch to display conversations. Synchronized so that replies are shared and updated between friends instantly.
 
 ### 3.5 Premium Sage Glassmorphic Interface
-* **Sidebar to Top Navigation**: Sidebar navigation has been converted into a premium top navigation bar (`Navbar.tsx`) and mobile bottom navigation (`MobileNav.tsx`) with a glassmorphic Sage design theme (`#E6EEC9/85` background with `backdrop-blur-xl`).
-* **Text Legibility**: White logo text uses text-shadow filters to ensure readability on the light sage background.
-* **Mobile View Chatbot**: Repositioned the chatbot assistant layout in mobile views so that it sits above the bottom navigation bar and does not cover clickable page content.
+
+- **Sidebar to Top Navigation**: Sidebar navigation has been converted into a premium top navigation bar (`Navbar.tsx`) and mobile bottom navigation (`MobileNav.tsx`) with a glassmorphic Sage design theme (`#E6EEC9/85` background with `backdrop-blur-xl`).
+- **Text Legibility**: White logo text uses text-shadow filters to ensure readability on the light sage background.
+- **Mobile View Chatbot**: Repositioned the chatbot assistant layout in mobile views so that it sits above the bottom navigation bar and does not cover clickable page content.
 
 ### 3.6 API Robustness
-* **Pruned Document Payloads**: Standardized Firestore transaction endpoints (posts, comment creations, marketplace redemptions) to prune `undefined` values via conditional spreads. This prevents Firebase Admin SDK validation errors and ensures reliable operations.
+
+- **Pruned Document Payloads**: Standardized Firestore transaction endpoints (posts, comment creations, marketplace redemptions) to prune `undefined` values via conditional spreads. This prevents Firebase Admin SDK validation errors and ensures reliable operations.
 
 ---
 
@@ -128,18 +137,18 @@ Guards the layout of protected pages (`(app)/*`) to ensure complete user profile
 
 EarthPrint integrates Google Cloud ecosystem services and browser Web APIs to create a high-fidelity experience:
 
-| Integration | Technology Used | Description |
-|---|---|---|
-| **Firebase Auth** | Client SDK & Admin SDK | Social Google OAuth & Email/Password session management. |
-| **Firestore** | Real-time SDK & Security Rules | Live database updates for leaderboards, community feeds, and transactions. |
-| **FCM** | Cloud Messaging | Push notifications for streak reminders and weekly summaries. |
+| Integration            | Technology Used                 | Description                                                                                     |
+| ---------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Firebase Auth**      | Client SDK & Admin SDK          | Social Google OAuth & Email/Password session management.                                        |
+| **Firestore**          | Real-time SDK & Security Rules  | Live database updates for leaderboards, community feeds, and transactions.                      |
+| **FCM**                | Cloud Messaging                 | Push notifications for streak reminders and weekly summaries.                                   |
 | **Vertex AI / Gemini** | Gemini API (`gemini-1.5-flash`) | Context-aware carbon recommendations, monthly coach advice, and utility bill document analysis. |
-| **Groq AI** | Groq API (`llama3-8b`) | Real-time biophilic reflections for the gratitude journal, weekly haikus, and chat assistant. |
-| **Maps Platform** | Google Routes & Places API | Calculated transit emissions and local eco-service map markers. |
-| **Cloud Vision AI** | Vision API OCR | Automatically reads utility bills to extract electricity/gas usage. |
-| **Web Vibration** | `navigator.vibrate` | Sensory haptic engine for the biome heartbeat pulse. |
-| **Media Devices** | `getUserMedia` | Handles camera overlays for the Planetary Mirror, Quests, and Time Capsule. |
-| **Web Audio** | `AudioContext` & Oscillators | Real-time ambient synthesizer for the Community Murmur soundscape mixer. |
+| **Groq AI**            | Groq API (`llama3-8b`)          | Real-time biophilic reflections for the gratitude journal, weekly haikus, and chat assistant.   |
+| **Maps Platform**      | Google Routes & Places API      | Calculated transit emissions and local eco-service map markers.                                 |
+| **Cloud Vision AI**    | Vision API OCR                  | Automatically reads utility bills to extract electricity/gas usage.                             |
+| **Web Vibration**      | `navigator.vibrate`             | Sensory haptic engine for the biome heartbeat pulse.                                            |
+| **Media Devices**      | `getUserMedia`                  | Handles camera overlays for the Planetary Mirror, Quests, and Time Capsule.                     |
+| **Web Audio**          | `AudioContext` & Oscillators    | Real-time ambient synthesizer for the Community Murmur soundscape mixer.                        |
 
 ---
 
@@ -147,63 +156,71 @@ EarthPrint integrates Google Cloud ecosystem services and browser Web APIs to cr
 
 All emission calculations are performed in **kg of CO₂-equivalent (kg CO₂e)** and compiled in `@earthprint/emission-engine`.
 
-* **Transport**: distance × mode factor, utilizing **EPA GHG Hub** and **DEFRA** datasets (with a 1.9x Radiative Forcing multiplier for flights).
-* **Food**: Poore & Nemecek (2018 Science) lifecycle food factors per gram.
-* **Energy**: kWh × location grid intensity sourced from **Electricity Maps API** or **IEA**.
-* **Shopping**: Spend × **DEFRA** spend-based category multipliers.
+- **Transport**: distance × mode factor, utilizing **EPA GHG Hub** and **DEFRA** datasets (with a 1.9x Radiative Forcing multiplier for flights).
+- **Food**: Poore & Nemecek (2018 Science) lifecycle food factors per gram.
+- **Energy**: kWh × location grid intensity sourced from **Electricity Maps API** or **IEA**.
+- **Shopping**: Spend × **DEFRA** spend-based category multipliers.
 
 ---
 
 ## 6. Tech Stack
 
-* **Frontend (Web)**: Next.js 14 (App Router), React 18, TypeScript (Strict).
-* **Frontend (Mobile)**: React Native, Expo Router.
-* **Backend Functions**: Firebase / Google Cloud Functions (Node.js 20).
-* **Styling**: Vanilla CSS, Tailwind CSS.
-* **Database & Auth**: Firebase Firestore, Firebase Authentication, LocalStorage caching.
-* **Testing**: Jest, React Testing Library.
-* **CI/CD**: GitHub Actions.
-* **Monitoring**: Sentry.
+- **Frontend (Web)**: Next.js 14 (App Router), React 18, TypeScript (Strict).
+- **Frontend (Mobile)**: React Native, Expo Router.
+- **Backend Functions**: Firebase / Google Cloud Functions (Node.js 20).
+- **Styling**: Vanilla CSS, Tailwind CSS.
+- **Database & Auth**: Firebase Firestore, Firebase Authentication, LocalStorage caching.
+- **Testing**: Jest, React Testing Library.
+- **CI/CD**: GitHub Actions.
+- **Monitoring**: Sentry.
 
 ---
 
 ## 7. Getting Started & Setup
 
 ### Prerequisites
-* Node.js 20+
-* npm 10+
+
+- Node.js 20+
+- npm 10+
 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/Kubojah-Dan/Carbon-Footprint-Awareness-Platform.git
    cd Carbon-Footprint-Awareness-Platform
    ```
 
 2. Install workspace dependencies:
+
    ```bash
    npm install
    ```
 
 3. Setup environment variables:
+
    ```bash
    cp .env.example web/.env.local
    # Fill in values inside web/.env.local (see Environment Variables below)
    ```
 
 4. Build packages and compile TypeScript:
+
    > **Note for Windows developers**: Turborepo builds strip path variables by default. Please run builds with `--env-mode=loose` to ensure correct TypeScript resolution:
+
    ```bash
    npx turbo run build --env-mode=loose
    ```
 
 5. Run the local development server:
+
    ```bash
    npx turbo run dev
    ```
 
 6. Run the test suite:
+
    ```bash
    npx turbo run test --env-mode=loose
    ```
@@ -269,6 +286,7 @@ SENTRY_PROJECT=your_sentry_project_here
 ## 9. Roadmap Status
 
 ### Phase 1 — Foundation: Measure & Understand
+
 - [x] Firebase Authentication (email + Google OAuth)
 - [x] Multi-step onboarding questionnaire
 - [x] Baseline emission estimate from questionnaire
@@ -277,6 +295,7 @@ SENTRY_PROJECT=your_sentry_project_here
 - [x] Basic AI tips via Vertex AI / Gemini
 
 ### Phase 2 — Intelligence: Automate & Personalize
+
 - [x] Advanced AI personalization engine with feedback loop
 - [x] Streak system with grace days & Sunday resets
 - [x] Green Points economy
@@ -285,6 +304,7 @@ SENTRY_PROJECT=your_sentry_project_here
 - [x] Haptic Heartbeat & Starfield Silence Hour (Sensory Hub)
 
 ### Phase 3 — Action: Marketplace & Community
+
 - [x] User public profiles + friend system
 - [x] Community feed with action posts, comments, & likes
 - [x] Friend + neighborhood leaderboards
@@ -301,18 +321,5 @@ SENTRY_PROJECT=your_sentry_project_here
 1. **Radiative Forcing for Flights**: A multiplier of 1.9x is applied to flight CO₂ emissions to account for non-CO₂ warming effects at altitude.
 2. **Second-Hand Goods**: Second-hand purchases are assumed to have 0 production emissions.
 3. **Grace Day Reset**: The weekly grace day resets every Sunday at 00:00:00 local time.
-
----
-
-## 11. Accessibility & LinkedIn Showcase Alternative Text
-
-To satisfy WCAG accessibility standards and assist screen-readers, here are alternative text descriptions for the EarthPrint LinkedIn showcase screenshots:
-
-* **Showcase Screen 1 (Dashboard Page):** 
-  > "Alternative Text: A screenshot showing the EarthPrint main dashboard using a Forest Deep HSL theme. The view displays a personalized greeting, a high-contrast circular progress chart illustrating a 5-day logging streak, a progress bar tracking the current month's carbon limit, and an interactive 6-month historical AreaChart showing emission reductions. Underneath are dynamic, card-based AI carbon-saving recommendations."
-* **Showcase Screen 2 (Earth Awareness Hub - Silence Hour):**
-  > "Alternative Text: A screenshot of the Silence Hour sensory experience. The interface features a dark glassmorphic container displaying a custom starfield canvas. Star density and brightness scale dynamically based on the user's home energy metrics. An instruction button at the bottom allows users to trigger a weekly 1-hour screen-free digital detox."
-* **Showcase Screen 3 (Carbon Quests & Corridors Map):**
-  > "Alternative Text: A responsive map interface displaying user geolocated pollinator planting coordinates. Pins mark physical locations where users have planted wildflower seeds claimed with Green Points. Visual lines show connecting corridors across neighborhoods, representing shared climate action."
 
 ---
