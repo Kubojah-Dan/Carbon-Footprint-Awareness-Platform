@@ -9,6 +9,7 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
+  modulePathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/.turbo/'],
   moduleNameMapper: {
     // Handle module aliases (if you have them in tsconfig.json)
     '^@/(.*)$': '<rootDir>/$1',
