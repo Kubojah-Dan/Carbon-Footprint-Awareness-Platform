@@ -291,25 +291,3 @@ SENTRY_PROJECT=your_sentry_project_here
 3. **Grace Day Reset**: The weekly grace day resets every Sunday at 00:00:00 local time.
 
 ---
-
-## 11. Deployment to Render
-
-EarthPrint is optimized for seamless deployment to **Render** using a Web Service setup defined in [render.yaml](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/render.yaml).
-
-### Web App Deployment Steps
-
-1. **Connect Repository**: Sign in to Render, click **New +**, and select **Web Service**. Connect your GitHub repository.
-2. **Configure Settings**:
-   - **Environment**: `Node`
-   - **Build Command**: `npm install --include=dev && npx turbo run build --filter=@earthprint/web...`
-   - **Start Command**: `npm run start --workspace=@earthprint/web`
-3. **Environment Variables**: Add all environment variables listed in Section 8 (particularly Firebase tokens and Gemini/Groq keys). Ensure `NODE_VERSION` is set to `20.20.2`.
-4. **Deploy**: Click **Deploy Web Service**. Render will resolve dependencies, build the workspace packages via Turborepo, compile Next.js in production mode, and serve the application live.
-
----
-
-## 12. License
-
-This project is licensed under the terms of the MIT License. See [LICENSE](file:///d:/EarthPrint/Carbon-Footprint-Awareness-Platform/LICENSE) for more details.
-
-Copyright (c) 2026 Kuboja Mabuba.
